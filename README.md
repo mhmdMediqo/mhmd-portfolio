@@ -8,6 +8,8 @@ Single-page Laravel portfolio for Mohammad Aghajani with a 3D technology-driven 
 - Blade single-page view
 - Three.js via ESM CDN for the animated 3D background
 - Pure CSS for layout, glow, grids, reveal choreography, and responsive behavior
+- GitHub Actions for CI and deployment
+- GitHub Pages for free preview hosting
 
 ## Local setup
 
@@ -17,8 +19,21 @@ Single-page Laravel portfolio for Mohammad Aghajani with a 3D technology-driven 
 4. Run `php artisan key:generate`.
 5. Start the app with `php artisan serve`.
 
+## GitHub workflow
+
+- Day-to-day development targets the `develop` branch through pull requests.
+- `.github/workflows/laravel-ci.yml` runs lightweight Laravel-oriented checks on pushes and pull requests for `develop`.
+- `.github/workflows/deploy-pages.yml` exports the Blade portfolio view to static HTML and publishes it to GitHub Pages on each push to `develop`.
+- The export script lives at `scripts/export-static.sh`.
+
+## Preview URL
+
+After the Pages workflow succeeds and GitHub Pages is enabled for the repository, the site should be available at:
+
+- `https://mhmdmediqo.github.io/mhmd-portfolio/`
+
 ## Notes
 
 - This environment did not include PHP or Composer, so the Laravel app could not be executed here.
-- The page is currently written as a premium one-page portfolio focused on Flutter, Laravel, and Tech Lead positioning.
-- Update the placeholder email and any project descriptions with your real details before deployment.
+- The online preview is static because this portfolio page does not currently require server-side Laravel behavior.
+- Update the placeholder email and any project descriptions with your real details before sharing the final portfolio.
