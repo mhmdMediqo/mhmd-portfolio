@@ -26,6 +26,7 @@ Single-page Laravel portfolio for Mohammad Aghajani with a 3D technology-driven 
 - `.github/workflows/deploy-pages.yml` exports the Blade portfolio view to static HTML and publishes it to GitHub Pages on each push to `develop`.
 - The export script lives at `scripts/export-static.sh`.
 - After switching the repository to public and enabling Pages from GitHub Actions, a fresh merge into `develop` will trigger a new deployment.
+- A branch-based fallback also exists in `docs/` on `develop` for cases where GitHub Actions does not run.
 
 ## Preview URL
 
