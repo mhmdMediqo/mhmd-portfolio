@@ -1,19 +1,16 @@
-name: Deploy Portfolio Preview
+name: Build Portfolio Preview
 
 on:
   push:
+    branches:
+      - develop
+  pull_request:
     branches:
       - develop
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: github-pages
-  cancel-in-progress: true
 
 jobs:
   build:
@@ -23,31 +20,19 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v5
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
       - name: Export static site
         run: |
           chmod +x scripts/export-static.sh
           ./scripts/export-static.sh
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+      - name: Verify exported files
+        run: |
+          test -f dist/index.html
+          test -f dist/404.html
+          test -f dist/assets/mhmd-cartoon-avatar.webp
+
+      - name: Upload static preview artifact
+        uses: actions/upload-artifact@v4
         with:
+          name: portfolio-static-preview
           path: dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    permissions:
-      pages: write
-      id-token: write
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
