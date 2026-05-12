@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mohammad Aghajani | Flutter Team Lead</title>
+    <title>Mohammad Aghajani | Flutter Product Engineer</title>
     <meta
         name="description"
-        content="Personal portfolio for Mohammad Aghajani, Flutter Team Lead building healthcare, consumer, and product-focused experiences with strong frontend craft and technical leadership."
+        content="Personal portfolio for Mohammad Aghajani, a Flutter engineer building healthcare, B2B, and consumer products across web and mobile."
     >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,7 @@
             --accent-2: #69b8ff;
             --accent-3: #ffaf78;
             --max: 1180px;
-            --section-pad: clamp(4rem, 8vw, 7rem);
+            --section-pad: clamp(3.25rem, 6vw, 5.5rem);
         }
 
         * { box-sizing: border-box; }
@@ -69,118 +69,98 @@
 
         a { color: inherit; text-decoration: none; }
         .shell { position: relative; z-index: 1; }
-        .topbar {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            backdrop-filter: blur(18px);
-            background: rgba(5, 10, 16, 0.58);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-        .topbar-inner, .section-inner, .footer-inner {
+        .section-inner,
+        .footer-inner {
             width: min(calc(100% - 2rem), var(--max));
             margin: 0 auto;
         }
-        .topbar-inner {
-            min-height: 74px;
-            display: flex;
+
+        section { padding: var(--section-pad) 0; }
+
+        .hero {
+            min-height: 92svh;
+            display: grid;
             align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
+            padding-top: clamp(2rem, 5vw, 4rem);
+            padding-bottom: clamp(2.5rem, 5vw, 4rem);
         }
-        .brand {
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+            gap: clamp(1.6rem, 3vw, 2.75rem);
+            align-items: center;
+        }
+
+        .identity {
             display: inline-flex;
             align-items: center;
             gap: 0.85rem;
             font-family: "Sora", sans-serif;
             font-weight: 700;
+            font-size: 0.98rem;
         }
+
         .brand-mark {
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
+            width: 46px;
+            height: 46px;
+            border-radius: 15px;
             display: grid;
             place-items: center;
             color: #031019;
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 56%, #d5ebff 100%);
             box-shadow: 0 0 40px rgba(105, 184, 255, 0.22);
         }
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: var(--muted);
-            font-size: 0.92rem;
-        }
-        .nav a {
-            position: relative;
-            padding: 0.25rem 0;
-        }
-        .nav a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -0.3rem;
-            width: 100%;
-            height: 2px;
-            transform: scaleX(0);
-            transform-origin: left;
-            background: linear-gradient(90deg, var(--accent), transparent);
-            transition: transform 180ms ease;
-        }
-        .nav a:hover::after,
-        .nav a:focus-visible::after { transform: scaleX(1); }
 
-        section { padding: var(--section-pad) 0; }
-        .hero {
-            min-height: calc(100svh - 74px);
-            display: grid;
-            align-items: center;
-            padding-top: clamp(2.5rem, 5vw, 4rem);
-        }
-        .hero-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.16fr) minmax(300px, 0.84fr);
-            gap: clamp(2rem, 4vw, 3.4rem);
-            align-items: end;
-        }
-        .eyebrow, .micro-label {
+        .eyebrow,
+        .micro-label {
             display: inline-flex;
             align-items: center;
             gap: 0.55rem;
             color: var(--accent);
-            font-size: 0.84rem;
+            font-size: 0.78rem;
             text-transform: uppercase;
-            letter-spacing: 0.22em;
+            letter-spacing: 0.2em;
         }
-        .eyebrow::before, .micro-label::before {
+
+        .eyebrow::before,
+        .micro-label::before {
             content: "";
-            width: 2.2rem;
+            width: 2rem;
             height: 1px;
             background: linear-gradient(90deg, var(--accent), transparent);
         }
-        .hero-copy h1 {
-            margin: 1.1rem 0 1rem;
-            font-family: "Sora", sans-serif;
-            font-size: clamp(3.1rem, 8vw, 6.8rem);
-            line-height: 0.97;
-            max-width: 10ch;
+
+        .hero-copy {
+            display: grid;
+            gap: 1rem;
         }
+
+        .hero-copy h1 {
+            margin: 0;
+            font-family: "Sora", sans-serif;
+            font-size: clamp(3rem, 6vw, 5.35rem);
+            line-height: 0.95;
+            max-width: 8.8ch;
+        }
+
         .hero-copy p {
             margin: 0;
-            max-width: 44rem;
+            max-width: 35rem;
             color: var(--muted);
-            font-size: clamp(1rem, 1.45vw, 1.15rem);
-            line-height: 1.82;
+            font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+            line-height: 1.75;
         }
+
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 0.9rem;
+            margin-top: 0.6rem;
         }
+
         .button {
-            min-height: 52px;
+            min-height: 50px;
             padding: 0 1.2rem;
             display: inline-flex;
             align-items: center;
@@ -190,229 +170,265 @@
             font-weight: 700;
             transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
         }
+
         .button:hover,
         .button:focus-visible { transform: translateY(-2px); }
+
         .button-primary {
             background: linear-gradient(135deg, var(--accent), #a6e6ff);
             color: #04131a;
             box-shadow: 0 16px 42px rgba(114, 244, 204, 0.16);
         }
+
         .button-secondary {
             border-color: rgba(255,255,255,0.1);
             background: rgba(255,255,255,0.03);
         }
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-top: 1.25rem;
-            padding: 0.8rem 1rem;
-            border-radius: 999px;
-            border: 1px solid rgba(114, 244, 204, 0.2);
-            background: rgba(114, 244, 204, 0.08);
-            color: #dffdf2;
-            font-size: 0.9rem;
-        }
-        .status-dot {
-            width: 0.65rem;
-            height: 0.65rem;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 18px rgba(114, 244, 204, 0.6);
-        }
-        .hero-side {
+
+        .hero-rail {
             display: grid;
             gap: 1rem;
-            align-self: center;
+            padding-left: clamp(1rem, 2vw, 1.5rem);
+            border-left: 1px solid rgba(255,255,255,0.08);
         }
-        .metric, .card {
-            border: 1px solid var(--line);
-            border-radius: 24px;
-            background: linear-gradient(180deg, rgba(10, 19, 30, 0.72), rgba(6, 12, 20, 0.42));
-            backdrop-filter: blur(16px);
+
+        .hero-point {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
-        .metric {
-            position: relative;
-            padding: 1.2rem;
-            overflow: hidden;
+
+        .hero-point:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
         }
-        .metric::before {
-            content: "";
-            position: absolute;
-            inset: auto -18% -42% auto;
-            width: 12rem;
-            height: 12rem;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(105, 184, 255, 0.16), transparent 70%);
+
+        .hero-point span {
+            display: block;
+            margin-bottom: 0.45rem;
+            color: var(--accent);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
         }
-        .metric strong {
+
+        .hero-point strong {
             display: block;
             font-family: "Sora", sans-serif;
-            font-size: clamp(1.7rem, 3vw, 2.6rem);
-            margin-bottom: 0.45rem;
+            font-size: clamp(1.1rem, 2vw, 1.55rem);
+            margin-bottom: 0.4rem;
         }
-        .metric span { color: var(--muted); line-height: 1.65; }
+
+        .hero-point p,
+        .story-copy p,
+        .card p,
+        .timeline-item p,
+        .list li {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.72;
+        }
 
         .section-heading {
             display: grid;
-            gap: 1rem;
-            margin-bottom: 2.4rem;
+            gap: 0.85rem;
+            margin-bottom: 2rem;
         }
+
         .section-heading h2 {
             margin: 0;
             font-family: "Sora", sans-serif;
-            font-size: clamp(2rem, 4vw, 3.4rem);
-            line-height: 1.02;
+            font-size: clamp(1.85rem, 3.6vw, 3rem);
+            line-height: 1.03;
+            max-width: 13ch;
         }
+
         .section-heading p {
             margin: 0;
-            max-width: 46rem;
+            max-width: 44rem;
             color: var(--muted);
-            line-height: 1.82;
+            line-height: 1.76;
         }
 
         .grid-12 {
             display: grid;
             grid-template-columns: repeat(12, minmax(0, 1fr));
-            gap: 1.2rem;
+            gap: 1rem;
         }
+
         .story-copy { grid-column: span 7; display: grid; gap: 1rem; }
         .story-side { grid-column: span 5; display: grid; gap: 1rem; }
-        .story-copy p, .card p, .timeline-item p, .list li { color: var(--muted); line-height: 1.82; margin: 0; }
-        .card { padding: 1.3rem; }
-        .card h3, .timeline-item h3 {
-            margin: 0 0 0.7rem;
-            font-family: "Sora", sans-serif;
-            font-size: 1.15rem;
+
+        .card,
+        .timeline-item {
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: linear-gradient(180deg, rgba(10, 19, 30, 0.72), rgba(6, 12, 20, 0.42));
+            backdrop-filter: blur(16px);
         }
+
+        .card { padding: 1.15rem; }
+
+        .card h3,
+        .timeline-item h3 {
+            margin: 0 0 0.65rem;
+            font-family: "Sora", sans-serif;
+            font-size: 1.06rem;
+        }
+
         .chips {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.7rem;
+            gap: 0.65rem;
             padding: 0;
             margin: 0;
             list-style: none;
         }
+
         .chips li {
-            padding: 0.7rem 0.95rem;
+            padding: 0.65rem 0.9rem;
             border-radius: 999px;
             border: 1px solid var(--line);
             background: rgba(255,255,255,0.03);
             color: #deebff;
-            font-size: 0.92rem;
+            font-size: 0.89rem;
         }
-        .experience {
+
+        .experience-grid {
             display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1rem;
         }
+
         .timeline-item {
-            padding: 1.2rem 1.25rem;
-            border-radius: 24px;
-            border: 1px solid var(--line);
-            background: linear-gradient(180deg, rgba(11, 22, 34, 0.7), rgba(6, 12, 20, 0.38));
+            padding: 1.15rem 1.2rem;
+            display: grid;
+            gap: 0.8rem;
         }
+
+        .timeline-item--wide {
+            grid-column: span 2;
+        }
+
         .timeline-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 0.8rem;
+            gap: 0.65rem;
             color: #ddecff;
-            font-size: 0.94rem;
+            font-size: 0.9rem;
         }
+
         .timeline-meta span {
-            padding: 0.4rem 0.7rem;
+            padding: 0.38rem 0.68rem;
             border-radius: 999px;
             background: rgba(255,255,255,0.04);
             border: 1px solid rgba(255,255,255,0.06);
         }
+
         .list {
             display: grid;
-            gap: 0.85rem;
+            gap: 0.8rem;
             padding: 0;
             margin: 0;
             list-style: none;
         }
+
         .list li {
-            padding: 0.95rem 0;
+            padding: 0.8rem 0;
             border-bottom: 1px solid rgba(255,255,255,0.06);
         }
+
         .list li:last-child { border-bottom: 0; }
+
         .focus-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 1rem;
         }
+
+        .contact-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-top: 0.4rem;
+        }
+
         .footer {
-            padding: 1.5rem 0 2.5rem;
+            padding: 1.25rem 0 2.25rem;
             color: var(--muted);
         }
+
         .footer-inner {
             display: flex;
             justify-content: space-between;
             gap: 1rem;
             border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 1.2rem;
-            font-size: 0.95rem;
+            padding-top: 1.15rem;
+            font-size: 0.92rem;
         }
 
         @media (max-width: 980px) {
-            .hero-grid, .grid-12, .focus-grid {
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-grid,
+            .grid-12,
+            .focus-grid,
+            .experience-grid {
                 grid-template-columns: 1fr;
             }
-            .story-copy, .story-side { grid-column: span 1; }
-            .nav { display: none; }
-            .topbar-inner { min-height: 68px; }
+
+            .story-copy,
+            .story-side,
+            .timeline-item--wide {
+                grid-column: span 1;
+            }
+
+            .hero-rail {
+                padding-left: 0;
+                padding-top: 0.75rem;
+                border-left: 0;
+                border-top: 1px solid rgba(255,255,255,0.08);
+            }
         }
     </style>
 </head>
 <body>
     <div class="shell">
-        <header class="topbar">
-            <div class="topbar-inner">
-                <a class="brand" href="#home" aria-label="Mohammad Aghajani home">
-                    <span class="brand-mark">MA</span>
-                    <span>Mohammad Aghajani</span>
-                </a>
-                <nav class="nav" aria-label="Primary">
-                    <a href="#about">About</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#focus">Focus</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            </div>
-        </header>
-
         <main id="home">
             <section class="hero">
                 <div class="section-inner hero-grid">
                     <div class="hero-copy">
-                        <span class="eyebrow">Flutter Team Lead • Product Engineering • Healthcare</span>
-                        <h1>Leading Flutter products with sharp delivery and real product weight.</h1>
+                        <div class="identity" aria-label="Portfolio owner">
+                            <span class="brand-mark">MA</span>
+                            <span>Mohammad Aghajani</span>
+                        </div>
+                        <span class="eyebrow">Flutter • Web + Mobile • Healthcare • B2B</span>
+                        <h1>Flutter products built for healthcare, B2B, and consumer apps.</h1>
                         <p>
-                            I build and lead cross-platform products that need more than clean UI. My recent work spans healthcare platforms, consumer quiz experiences, fitness tracking, and B2B product delivery, with a strong focus on scalable architecture, high-performance Flutter web and mobile experiences, and practical technical leadership.
+                            I design and ship polished Flutter experiences with strong architecture, API integration, and performance work across web and mobile. The focus is clean product execution, clear interfaces, and software that keeps scaling without getting messy.
                         </p>
                         <div class="hero-actions">
-                            <a class="button button-primary" href="#experience">See experience</a>
-                            <a class="button button-secondary" href="#contact">Open GitHub</a>
-                        </div>
-                        <div class="status-pill" aria-label="Develop deployment status">
-                            <span class="status-dot"></span>
-                            <span>Live preview is building from the <strong>develop</strong> branch.</span>
+                            <a class="button button-primary" href="https://www.linkedin.com/in/mohammad-aghajani-435830206">Start conversation</a>
+                            <a class="button button-secondary" href="#experience">View resume</a>
                         </div>
                     </div>
 
-                    <div class="hero-side">
-                        <article class="metric">
+                    <div class="hero-rail" aria-label="Current work snapshot">
+                        <article class="hero-point">
+                            <span>Now</span>
                             <strong>TECHTiQ</strong>
-                            <span>Flutter Team Lead on a healthcare web application focused on scalable delivery, reliability, real-time communication, and secure product flows.</span>
+                            <p>Healthcare web product work with Flutter, secure flows, real-time communication, and close collaboration with product, design, and QA.</p>
                         </article>
-                        <article class="metric">
-                            <strong>10+ devs</strong>
-                            <span>Hands-on leadership across architecture, code review, mentoring, and aligning engineering work with product and UX decisions.</span>
+                        <article class="hero-point">
+                            <span>Across products</span>
+                            <strong>Quiz, fitness, B2B, and logistics</strong>
+                            <p>Recent work spans learning, fitness tracking, search workflows, and transport operations with responsive UI and reliable API integration.</p>
                         </article>
-                        <article class="metric">
-                            <strong>Now</strong>
-                            <span>Portfolio preview refreshed from develop so deployment can be checked against a clearly visible frontend update.</span>
+                        <article class="hero-point">
+                            <span>Approach</span>
+                            <strong>Clean structure over noisy complexity</strong>
+                            <p>Strong frontend craft, practical architecture, and product decisions that stay understandable for both users and teams.</p>
                         </article>
                     </div>
                 </div>
@@ -422,36 +438,36 @@
                 <div class="section-inner">
                     <div class="section-heading">
                         <span class="micro-label">About</span>
-                        <h2>Product-minded engineering with a Flutter core.</h2>
+                        <h2>Product-minded Flutter work with a sharp UI eye.</h2>
                         <p>
-                            My work sits at the intersection of frontend polish, dependable architecture, and delivery leadership. I care about the details that make software feel premium in use, but I care just as much about the engineering structure that keeps a product stable as it grows.
+                            My work sits where frontend polish, dependable architecture, and real delivery pressure meet. I care about motion, clarity, and interface quality, but just as much about the code structure and API decisions that keep a product stable after launch.
                         </p>
                     </div>
                     <div class="grid-12">
                         <div class="story-copy">
                             <p>
-                                In healthcare, I have led Flutter web work where performance, reliability, and collaboration with product, design, and QA all matter at the same time. In consumer and B2B projects, I have focused on responsive experiences, API integration, performance tuning, testing, debugging, and building interfaces that feel clear instead of noisy.
+                                Across healthcare, consumer, B2B, and fitness products, I usually work on the parts that most affect day-to-day product quality: responsive interfaces, data flow, performance, debugging, and the details that make software feel intentional instead of generic.
                             </p>
                             <p>
-                                The throughline is simple: I like software that feels intentional. That applies to architecture, motion, code quality, delivery rhythm, and the way the product communicates trust to the person using it.
+                                The throughline is simple: build products that look calm, work fast, and remain maintainable as features grow.
                             </p>
                             <ul class="chips" aria-label="Core strengths">
                                 <li>Flutter web and mobile</li>
-                                <li>Technical leadership</li>
+                                <li>Product UI implementation</li>
                                 <li>Healthcare product delivery</li>
                                 <li>API integration</li>
                                 <li>Performance optimization</li>
-                                <li>Cross-functional execution</li>
+                                <li>Clean architecture</li>
                             </ul>
                         </div>
                         <aside class="story-side">
                             <div class="card">
-                                <h3>Current role</h3>
-                                <p>Flutter Team Lead at TECHTiQ since December 2024, leading a healthcare web application from architecture through review and delivery.</p>
+                                <h3>Current direction</h3>
+                                <p>Healthcare-focused Flutter work with web performance, secure flows, and reliable product delivery at the center.</p>
                             </div>
                             <div class="card">
                                 <h3>Working style</h3>
-                                <p>Clear boundaries, practical decisions, strong review discipline, and shipping in steps that teams can trust.</p>
+                                <p>Thoughtful UI, clean boundaries, steady iteration, and shipping in steps that keep the product understandable.</p>
                             </div>
                         </aside>
                     </div>
@@ -461,55 +477,106 @@
             <section id="experience">
                 <div class="section-inner">
                     <div class="section-heading">
-                        <span class="micro-label">Experience</span>
-                        <h2>Recent roles and product contexts.</h2>
+                        <span class="micro-label">Resume</span>
+                        <h2>Recent roles and the product contexts behind them.</h2>
                         <p>
-                            A few of the roles and projects that best show the range of work across healthcare, consumer apps, fitness, and B2B delivery.
+                            A tighter snapshot of the work across healthcare, consumer, learning, fitness, logistics, and B2B products.
                         </p>
                     </div>
-                    <div class="experience">
+                    <div class="experience-grid">
                         <article class="timeline-item">
                             <div class="timeline-meta">
                                 <span>TECHTiQ</span>
-                                <span>Flutter Team Lead</span>
                                 <span>Dec 2024 - Present</span>
                                 <span>Healthcare</span>
                             </div>
-                            <h3>Architecting and leading a healthcare web product.</h3>
-                            <p>Leading development of a Flutter-based healthcare web application, mentoring Flutter engineers, reviewing code, shaping scalable architecture, and collaborating closely with product, UI/UX, and QA.</p>
+                            <h3>Flutter Team Lead</h3>
+                            <p>Designing and building a healthcare web application with scalable architecture, code review, strong performance, real-time communication, and secure data handling.</p>
                         </article>
 
                         <article class="timeline-item">
                             <div class="timeline-meta">
                                 <span>Joghd</span>
-                                <span>Senior Flutter Developer</span>
                                 <span>Jun 2024 - Oct 2024</span>
-                                <span>Consumer Quiz App</span>
+                                <span>Quiz App</span>
                             </div>
-                            <h3>Interactive quiz product tailored for Iranian users.</h3>
-                            <p>Worked across application development, API integration, UI collaboration, testing, debugging, performance tuning, and iterative improvement based on user feedback.</p>
+                            <h3>Senior Flutter Developer</h3>
+                            <p>Built an interactive quiz product for Iranian users with cross-platform UI work, backend integration, testing, debugging, and continuous feature improvement from user feedback.</p>
                         </article>
 
                         <article class="timeline-item">
                             <div class="timeline-meta">
                                 <span>Isfaf</span>
-                                <span>Senior Flutter Developer</span>
                                 <span>Mar 2024 - Sep 2024</span>
                                 <span>Fitness Tracking</span>
                             </div>
-                            <h3>Fitness and running experiences with live data handling.</h3>
-                            <p>Built features around steps, calories, and running events, with a focus on cross-platform reliability, real-time processing, user-centered design, and strong performance on mobile.</p>
+                            <h3>Senior Flutter Developer</h3>
+                            <p>Worked on the Gamiran fitness application with step and calorie tracking, running events, real-time data work, and performance-focused mobile UX.</p>
                         </article>
 
                         <article class="timeline-item">
                             <div class="timeline-meta">
                                 <span>Searchha</span>
-                                <span>Senior Flutter Developer</span>
                                 <span>Aug 2024</span>
-                                <span>B2B Product</span>
+                                <span>B2B</span>
                             </div>
-                            <h3>Architecture and product thinking for a B2B application.</h3>
-                            <p>Led architectural decisions, API integration, usability improvements, analytics-minded product thinking, and mentoring that helped keep the product scalable and maintainable.</p>
+                            <h3>Senior Flutter Developer</h3>
+                            <p>Supported a B2B product with scalable architecture, API integration, usability iteration, app analytics, and strong product-focused implementation.</p>
+                        </article>
+
+                        <article class="timeline-item timeline-item--wide">
+                            <div class="timeline-meta">
+                                <span>Besenior</span>
+                                <span>2019 - 2024</span>
+                                <span>Apps + Education</span>
+                            </div>
+                            <h3>Mobile product and training work across several roles</h3>
+                            <ul class="list">
+                                <li>Team Lead - Mobile Application Development, Feb 2024 - Sep 2024: worked on the LeagueTournament app for Android and iOS with real-time tournament management, game guides, news, and video content.</li>
+                                <li>Flutter development instructor, Feb 2021 - Sep 2024: taught project-based Flutter topics including architecture, packages, and Bloc-oriented workflows.</li>
+                                <li>Android development instructor, Jan 2019 - Feb 2023: taught Android Jetpack, LiveData, Kotlin, Room, Hilt, and advanced Android development concepts.</li>
+                                <li>Flutter developer, Jun 2022 - Aug 2022: built LeagueBs, an app for learning League of Legends concepts and content.</li>
+                            </ul>
+                        </article>
+
+                        <article class="timeline-item">
+                            <div class="timeline-meta">
+                                <span>T.Tab</span>
+                                <span>Aug 2022 - Jun 2023</span>
+                                <span>Logistics</span>
+                            </div>
+                            <h3>Flutter Developer</h3>
+                            <p>Developed a transport application for moving-company staff with user-friendly Flutter UI, real-time tracking, operational efficiency improvements, and day-to-day debugging.</p>
+                        </article>
+
+                        <article class="timeline-item">
+                            <div class="timeline-meta">
+                                <span>chitan peitan</span>
+                                <span>Sep 2022 - Dec 2022</span>
+                                <span>Contract</span>
+                            </div>
+                            <h3>Flutter Developer</h3>
+                            <p>Delivered Android, iOS, and web work with Flutter using Get It, Bloc and Cubit, Dio, and repository-oriented architecture patterns.</p>
+                        </article>
+
+                        <article class="timeline-item">
+                            <div class="timeline-meta">
+                                <span>mobin khodro</span>
+                                <span>Apr 2022 - Jul 2022</span>
+                                <span>Automation</span>
+                            </div>
+                            <h3>Flutter Developer</h3>
+                            <p>Worked on the automation application for Mobin Khodro with Flutter and Git-based collaboration in an Iran-based freelance setup.</p>
+                        </article>
+
+                        <article class="timeline-item">
+                            <div class="timeline-meta">
+                                <span>Pte With Ash</span>
+                                <span>Jan 2020 - Jul 2021</span>
+                                <span>Android</span>
+                            </div>
+                            <h3>Android Developer</h3>
+                            <p>Built an English language learning application with Android and RxAndroid, focusing on lesson presentation, interaction flows, and smooth app behavior.</p>
                         </article>
                     </div>
                 </div>
@@ -519,23 +586,23 @@
                 <div class="section-inner">
                     <div class="section-heading">
                         <span class="micro-label">Focus</span>
-                        <h2>What I bring to a team.</h2>
+                        <h2>What the work usually centers on.</h2>
                         <p>
-                            The strongest fit for my work is where product ambition, technical clarity, and frontend craft all need to move together.
+                            The strongest fit is where frontend quality, product clarity, and dependable engineering all need to move together.
                         </p>
                     </div>
                     <div class="focus-grid">
                         <article class="card">
-                            <h3>Flutter execution</h3>
-                            <p>Responsive UI systems, consistent interaction quality, and practical state and feature organization across web and mobile.</p>
+                            <h3>Product UI</h3>
+                            <p>Responsive Flutter interfaces, interaction polish, and screen systems that stay readable and calm on web and mobile.</p>
                         </article>
                         <article class="card">
-                            <h3>Leadership and review</h3>
-                            <p>Architecture guidance, mentoring, code review, scope control, and keeping shipping momentum without letting quality drift.</p>
+                            <h3>Architecture</h3>
+                            <p>Practical state boundaries, API integration, clean feature structure, and code that stays maintainable as the product grows.</p>
                         </article>
                         <article class="card">
-                            <h3>Real product delivery</h3>
-                            <p>Healthcare, B2B, fitness, and learning products where APIs, performance, reliability, and team alignment all matter.</p>
+                            <h3>Delivery</h3>
+                            <p>Healthcare, B2B, logistics, learning, and fitness products where quality, speed, and trust all matter at the same time.</p>
                         </article>
                     </div>
                 </div>
@@ -545,22 +612,25 @@
                 <div class="section-inner">
                     <div class="section-heading">
                         <span class="micro-label">Contact</span>
-                        <h2>Open for strong product work.</h2>
+                        <h2>Open for strong Flutter product work.</h2>
                         <p>
-                            This preview is now explicitly refreshed through the develop pipeline. The fastest contact point currently included on the page is GitHub.
+                            The best direct contact on this page is LinkedIn, with GitHub included as a second reference point for current work.
                         </p>
                     </div>
                     <div class="grid-12">
                         <div class="story-copy">
                             <div class="card">
                                 <h3>Best fit</h3>
-                                <p>Flutter leadership, senior cross-platform product work, healthcare and B2B experiences, and roles that value both frontend quality and technical ownership.</p>
+                                <p>Healthcare products, senior Flutter roles, web and mobile UI implementation, API-heavy apps, and teams that want clean execution without unnecessary complexity.</p>
                             </div>
                         </div>
                         <aside class="story-side">
                             <div class="card">
-                                <h3>GitHub</h3>
-                                <p><a href="https://github.com/mhmdMediqo">github.com/mhmdMediqo</a></p>
+                                <h3>Start conversation</h3>
+                                <div class="contact-actions">
+                                    <a class="button button-primary" href="https://www.linkedin.com/in/mohammad-aghajani-435830206">LinkedIn</a>
+                                    <a class="button button-secondary" href="https://github.com/mhmdMediqo">GitHub</a>
+                                </div>
                             </div>
                         </aside>
                     </div>
@@ -571,7 +641,7 @@
         <footer class="footer">
             <div class="footer-inner">
                 <span>Mohammad Aghajani</span>
-                <span>Flutter Team Lead • Product Engineering</span>
+                <span>Flutter product engineering across web and mobile</span>
             </div>
         </footer>
     </div>
