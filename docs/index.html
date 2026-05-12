@@ -25,6 +25,7 @@
             --accent-3: #ffaf78;
             --max: 1180px;
             --section-pad: clamp(3.25rem, 6vw, 5.5rem);
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         * { box-sizing: border-box; }
@@ -39,6 +40,7 @@
                 radial-gradient(circle at 70% 68%, rgba(255, 175, 120, 0.10), transparent 22%),
                 linear-gradient(180deg, #040a10 0%, #08131d 42%, #03070c 100%);
             overflow-x: hidden;
+            cursor: none;
         }
 
         body::before {
@@ -52,6 +54,7 @@
             background-size: 72px 72px;
             mask-image: radial-gradient(circle at center, black 26%, transparent 82%);
             opacity: 0.55;
+            animation: gridShift 22s linear infinite;
         }
 
         body::after {
@@ -65,6 +68,7 @@
                 radial-gradient(circle at 52% 82%, rgba(255, 175, 120, 0.08), transparent 20%);
             filter: blur(22px);
             opacity: 0.9;
+            animation: ambientPulse 14s var(--ease-out) infinite alternate;
         }
 
         a { color: inherit; text-decoration: none; }
@@ -110,6 +114,8 @@
             color: #031019;
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 56%, #d5ebff 100%);
             box-shadow: 0 0 40px rgba(105, 184, 255, 0.22);
+            animation: badgeFloat 5.5s var(--ease-out) infinite;
+            transition: transform 220ms var(--ease-out), box-shadow 220ms ease;
         }
 
         .eyebrow,
@@ -129,6 +135,8 @@
             width: 2rem;
             height: 1px;
             background: linear-gradient(90deg, var(--accent), transparent);
+            transform-origin: left;
+            animation: lineGlow 2.8s ease-in-out infinite;
         }
 
         .hero-copy {
@@ -136,12 +144,25 @@
             gap: 1rem;
         }
 
+        .hero-copy > * {
+            opacity: 0;
+            transform: translateY(24px);
+            animation: heroRise 0.85s var(--ease-out) forwards;
+        }
+
+        .hero-copy > *:nth-child(1) { animation-delay: 0.08s; }
+        .hero-copy > *:nth-child(2) { animation-delay: 0.16s; }
+        .hero-copy > *:nth-child(3) { animation-delay: 0.24s; }
+        .hero-copy > *:nth-child(4) { animation-delay: 0.34s; }
+        .hero-copy > *:nth-child(5) { animation-delay: 0.44s; }
+
         .hero-copy h1 {
             margin: 0;
             font-family: "Sora", sans-serif;
             font-size: clamp(2.45rem, 4.8vw, 4.35rem);
             line-height: 0.95;
             max-width: 9ch;
+            text-wrap: balance;
         }
 
         .hero-copy p {
@@ -160,6 +181,8 @@
         }
 
         .button {
+            position: relative;
+            overflow: hidden;
             min-height: 50px;
             padding: 0 1.2rem;
             display: inline-flex;
@@ -168,11 +191,34 @@
             border-radius: 999px;
             border: 1px solid transparent;
             font-weight: 700;
-            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+            transition:
+                transform 240ms var(--ease-out),
+                border-color 200ms ease,
+                background 220ms ease,
+                box-shadow 220ms ease;
+            will-change: transform;
+        }
+
+        .button::after {
+            content: "";
+            position: absolute;
+            inset: -120% auto -120% -35%;
+            width: 34%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.34), transparent);
+            transform: rotate(16deg) translateX(-180%);
+            transition: transform 520ms var(--ease-out);
+            pointer-events: none;
         }
 
         .button:hover,
-        .button:focus-visible { transform: translateY(-2px); }
+        .button:focus-visible {
+            transform: translateY(-4px) scale(1.01);
+        }
+
+        .button:hover::after,
+        .button:focus-visible::after {
+            transform: rotate(16deg) translateX(420%);
+        }
 
         .button-primary {
             background: linear-gradient(135deg, var(--accent), #a6e6ff);
@@ -180,9 +226,20 @@
             box-shadow: 0 16px 42px rgba(114, 244, 204, 0.16);
         }
 
+        .button-primary:hover,
+        .button-primary:focus-visible {
+            box-shadow: 0 24px 55px rgba(114, 244, 204, 0.24);
+        }
+
         .button-secondary {
             border-color: rgba(255,255,255,0.1);
             background: rgba(255,255,255,0.03);
+        }
+
+        .button-secondary:hover,
+        .button-secondary:focus-visible {
+            border-color: rgba(114, 244, 204, 0.34);
+            background: rgba(255,255,255,0.06);
         }
 
         .hero-rail {
@@ -193,8 +250,41 @@
         }
 
         .hero-point {
+            position: relative;
             padding-bottom: 1rem;
             border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: transform 260ms var(--ease-out), border-color 200ms ease;
+            will-change: transform;
+            opacity: 0;
+            transform: translateX(26px);
+            animation: railSlide 0.9s var(--ease-out) forwards;
+        }
+
+        .hero-point:nth-child(1) { animation-delay: 0.26s; }
+        .hero-point:nth-child(2) { animation-delay: 0.38s; }
+        .hero-point:nth-child(3) { animation-delay: 0.5s; }
+
+        .hero-point::after {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 100%;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(114, 244, 204, 0.08), transparent 60%);
+            opacity: 0;
+            transition: opacity 220ms ease;
+            pointer-events: none;
+        }
+
+        .hero-point:hover,
+        .hero-point:focus-within {
+            transform: translateX(0) translateY(-4px);
+            border-color: rgba(114, 244, 204, 0.22);
+        }
+
+        .hero-point:hover::after,
+        .hero-point:focus-within::after {
+            opacity: 1;
         }
 
         .hero-point:last-child {
@@ -260,10 +350,66 @@
 
         .card,
         .timeline-item {
+            position: relative;
+            overflow: hidden;
             border: 1px solid var(--line);
             border-radius: 22px;
             background: linear-gradient(180deg, rgba(10, 19, 30, 0.72), rgba(6, 12, 20, 0.42));
             backdrop-filter: blur(16px);
+            transition:
+                transform 280ms var(--ease-out),
+                border-color 200ms ease,
+                box-shadow 220ms ease,
+                background 220ms ease;
+            will-change: transform;
+        }
+
+        .card::before,
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(114, 244, 204, 0.16), transparent 35%, rgba(105, 184, 255, 0.12) 68%, transparent 100%);
+            opacity: 0;
+            transition: opacity 240ms ease;
+            pointer-events: none;
+        }
+
+        .card::after,
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            inset: -120% auto auto -40%;
+            width: 38%;
+            height: 250%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+            transform: rotate(14deg) translateX(-180%);
+            transition: transform 900ms var(--ease-out);
+            pointer-events: none;
+        }
+
+        .card:hover,
+        .card:focus-within,
+        .timeline-item:hover,
+        .timeline-item:focus-within {
+            transform: translateY(-8px);
+            border-color: rgba(114, 244, 204, 0.24);
+            box-shadow: 0 26px 70px rgba(2, 9, 15, 0.3);
+        }
+
+        .card:hover::before,
+        .card:focus-within::before,
+        .timeline-item:hover::before,
+        .timeline-item:focus-within::before {
+            opacity: 1;
+        }
+
+        .card:hover::after,
+        .card:focus-within::after,
+        .timeline-item:hover::after,
+        .timeline-item:focus-within::after {
+            transform: rotate(14deg) translateX(430%);
         }
 
         .card { padding: 1.15rem; }
@@ -291,6 +437,20 @@
             background: rgba(255,255,255,0.03);
             color: #deebff;
             font-size: 0.89rem;
+            transition:
+                transform 220ms var(--ease-out),
+                border-color 180ms ease,
+                background 180ms ease,
+                color 180ms ease;
+            will-change: transform;
+        }
+
+        .chips li:hover,
+        .chips li:focus-visible {
+            transform: translateY(-4px);
+            border-color: rgba(114, 244, 204, 0.28);
+            background: rgba(114, 244, 204, 0.08);
+            color: #f3fffb;
         }
 
         .experience-grid {
@@ -322,6 +482,14 @@
             border-radius: 999px;
             background: rgba(255,255,255,0.04);
             border: 1px solid rgba(255,255,255,0.06);
+            transition: transform 200ms var(--ease-out), border-color 180ms ease, background 180ms ease;
+        }
+
+        .timeline-item:hover .timeline-meta span,
+        .timeline-item:focus-within .timeline-meta span {
+            transform: translateY(-2px);
+            border-color: rgba(114, 244, 204, 0.18);
+            background: rgba(255,255,255,0.06);
         }
 
         .list {
@@ -366,7 +534,115 @@
             font-size: 0.92rem;
         }
 
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px) scale(0.985);
+            transition:
+                opacity 720ms var(--ease-out),
+                transform 920ms var(--ease-out);
+            transition-delay: calc(var(--reveal-delay, 0) * 90ms);
+            will-change: opacity, transform;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .cursor-dot,
+        .cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 80;
+            opacity: 0;
+            transition: opacity 160ms ease, transform 200ms ease;
+        }
+
+        .cursor-dot {
+            width: 10px;
+            height: 10px;
+            margin-left: -5px;
+            margin-top: -5px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), #ffffff);
+            box-shadow: 0 0 24px rgba(114, 244, 204, 0.55);
+        }
+
+        .cursor-ring {
+            width: 42px;
+            height: 42px;
+            margin-left: -21px;
+            margin-top: -21px;
+            border-radius: 999px;
+            border: 1px solid rgba(114, 244, 204, 0.45);
+            background: rgba(114, 244, 204, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .cursor-active .cursor-dot,
+        .cursor-active .cursor-ring {
+            opacity: 1;
+        }
+
+        .cursor-hover .cursor-ring {
+            transform: scale(1.45);
+            border-color: rgba(166, 230, 255, 0.66);
+            background: rgba(105, 184, 255, 0.08);
+        }
+
+        .cursor-pressed .cursor-dot {
+            transform: scale(0.7);
+        }
+
+        .cursor-pressed .cursor-ring {
+            transform: scale(0.92);
+        }
+
+        @keyframes heroRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes railSlide {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes ambientPulse {
+            0% {
+                transform: scale(1) translate3d(0, 0, 0);
+                opacity: 0.84;
+            }
+            100% {
+                transform: scale(1.08) translate3d(1.5%, -1.2%, 0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes gridShift {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 0 72px, 72px 0; }
+        }
+
+        @keyframes badgeFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes lineGlow {
+            0%, 100% { opacity: 0.65; transform: scaleX(0.85); }
+            50% { opacity: 1; transform: scaleX(1.05); }
+        }
+
         @media (max-width: 980px) {
+            body { cursor: auto; }
+
             .hero {
                 min-height: auto;
             }
@@ -391,9 +667,37 @@
                 border-top: 1px solid rgba(255,255,255,0.08);
             }
         }
+
+        @media (pointer: coarse) {
+            body { cursor: auto; }
+            .cursor-dot,
+            .cursor-ring { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+
+            .reveal,
+            .hero-copy > *,
+            .hero-point {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            body { cursor: auto; }
+            .cursor-dot,
+            .cursor-ring { display: none; }
+        }
     </style>
 </head>
 <body>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
     <div class="shell">
         <main id="home">
             <section class="hero">
@@ -436,7 +740,7 @@
 
             <section id="about">
                 <div class="section-inner">
-                    <div class="section-heading">
+                    <div class="section-heading reveal">
                         <span class="micro-label">About</span>
                         <h2>Product-focused engineering across web, mobile, and AI-driven systems.</h2>
                         <p>
@@ -445,29 +749,29 @@
                     </div>
                     <div class="grid-12">
                         <div class="story-copy">
-                            <p>
+                            <p class="reveal">
                                 Across healthcare, consumer, B2B, fitness, and learning products, I have worked on the parts that matter most to day-to-day product quality: backend structure, frontend implementation, mobile delivery, data flow, debugging, and the decisions that keep a system understandable as it grows.
                             </p>
-                            <p>
+                            <p class="reveal">
                                 The throughline is simple: build useful software, keep the architecture clean, and make product execution feel calm instead of chaotic.
                             </p>
                             <ul class="chips" aria-label="Core strengths">
-                                <li>Flutter</li>
-                                <li>Laravel</li>
-                                <li>GitHub CI/CD workflows</li>
-                                <li>AI agents</li>
-                                <li>Prompt writing</li>
-                                <li>Leadership</li>
-                                <li>Code review</li>
-                                <li>Debugging</li>
+                                <li class="reveal">Flutter</li>
+                                <li class="reveal">Laravel</li>
+                                <li class="reveal">GitHub CI/CD workflows</li>
+                                <li class="reveal">AI agents</li>
+                                <li class="reveal">Prompt writing</li>
+                                <li class="reveal">Leadership</li>
+                                <li class="reveal">Code review</li>
+                                <li class="reveal">Debugging</li>
                             </ul>
                         </div>
                         <aside class="story-side">
-                            <div class="card">
+                            <div class="card reveal">
                                 <h3>Current direction</h3>
                                 <p>Full-stack product work across healthcare, B2B systems, frontend implementation, backend architecture, and AI-assisted workflows.</p>
                             </div>
-                            <div class="card">
+                            <div class="card reveal">
                                 <h3>Working style</h3>
                                 <p>Clear ownership, practical engineering choices, strong review habits, and steady execution from idea to shipped product.</p>
                             </div>
@@ -478,7 +782,7 @@
 
             <section id="experience">
                 <div class="section-inner">
-                    <div class="section-heading">
+                    <div class="section-heading reveal">
                         <span class="micro-label">Resume</span>
                         <h2>Recent roles across product, platform, and engineering delivery.</h2>
                         <p>
@@ -486,7 +790,7 @@
                         </p>
                     </div>
                     <div class="experience-grid">
-                        <article class="timeline-item">
+                        <article class="timeline-item reveal">
                             <div class="timeline-meta">
                                 <span>TECHTiQ</span>
                                 <span>Dec 2024 - Present</span>
@@ -496,7 +800,7 @@
                             <p>Designing and delivering a healthcare web product with scalable architecture, code review, performance work, real-time communication, and secure data handling.</p>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item reveal">
                             <div class="timeline-meta">
                                 <span>Joghd</span>
                                 <span>Jun 2024 - Oct 2024</span>
@@ -506,7 +810,7 @@
                             <p>Built an interactive quiz product for Iranian users with cross-platform UI work, backend integration, testing, debugging, and continuous feature improvement from user feedback.</p>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item reveal">
                             <div class="timeline-meta">
                                 <span>Isfaf</span>
                                 <span>Mar 2024 - Sep 2024</span>
@@ -516,7 +820,7 @@
                             <p>Worked on the Gamiran fitness application with step and calorie tracking, running events, real-time data work, and performance-focused mobile UX.</p>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item reveal">
                             <div class="timeline-meta">
                                 <span>Searchha</span>
                                 <span>Aug 2024</span>
@@ -526,7 +830,7 @@
                             <p>Worked full stack on Searchha with Laravel on the backend, Blade and Vite on the frontend, and Flutter for the mobile app, helping shape product flow, integration logic, and day-to-day delivery.</p>
                         </article>
 
-                        <article class="timeline-item timeline-item--wide">
+                        <article class="timeline-item timeline-item--wide reveal">
                             <div class="timeline-meta">
                                 <span>Besenior</span>
                                 <span>2019 - 2024</span>
@@ -541,7 +845,7 @@
                             </ul>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item reveal">
                             <div class="timeline-meta">
                                 <span>T.Tab</span>
                                 <span>Aug 2022 - Jun 2023</span>
@@ -551,7 +855,7 @@
                             <p>Developed a transport application for moving-company staff with user-friendly UI, real-time tracking, operational efficiency improvements, and day-to-day debugging.</p>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item reveal">
                             <div class="timeline-meta">
                                 <span>chitan peitan</span>
                                 <span>Sep 2022 - Dec 2022</span>
@@ -561,7 +865,7 @@
                             <p>Delivered Android, iOS, and web work using Get It, Bloc and Cubit, Dio, and repository-oriented architecture patterns.</p>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item reveal">
                             <div class="timeline-meta">
                                 <span>mobin khodro</span>
                                 <span>Apr 2022 - Jul 2022</span>
@@ -571,7 +875,7 @@
                             <p>Worked on the automation application for Mobin Khodro with product implementation, debugging, and Git-based collaboration in a freelance setup.</p>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item reveal">
                             <div class="timeline-meta">
                                 <span>Pte With Ash</span>
                                 <span>Jan 2020 - Jul 2021</span>
@@ -586,7 +890,7 @@
 
             <section id="focus">
                 <div class="section-inner">
-                    <div class="section-heading">
+                    <div class="section-heading reveal">
                         <span class="micro-label">Focus</span>
                         <h2>How I usually contribute to a team.</h2>
                         <p>
@@ -594,15 +898,15 @@
                         </p>
                     </div>
                     <div class="focus-grid">
-                        <article class="card">
+                        <article class="card reveal">
                             <h3>Full-stack delivery</h3>
                             <p>Backend, frontend, and mobile work that stays aligned around the actual product instead of drifting into disconnected pieces.</p>
                         </article>
-                        <article class="card">
+                        <article class="card reveal">
                             <h3>Review and debugging</h3>
                             <p>Code review, problem solving, debugging, and technical judgment that help keep product quality high without slowing the team down.</p>
                         </article>
-                        <article class="card">
+                        <article class="card reveal">
                             <h3>AI-assisted execution</h3>
                             <p>Prompt writing, AI agents, delivery workflows, and practical automation that make engineering work faster and more repeatable.</p>
                         </article>
@@ -612,7 +916,7 @@
 
             <section id="contact">
                 <div class="section-inner">
-                    <div class="section-heading">
+                    <div class="section-heading reveal">
                         <span class="micro-label">Contact</span>
                         <h2>Open for strong product and engineering work.</h2>
                         <p>
@@ -621,13 +925,13 @@
                     </div>
                     <div class="grid-12">
                         <div class="story-copy">
-                            <div class="card">
+                            <div class="card reveal">
                                 <h3>Best fit</h3>
                                 <p>Full-stack product roles, Laravel and frontend systems, mobile delivery, AI-agent workflows, code review, debugging, and teams that value clear ownership and reliable execution.</p>
                             </div>
                         </div>
                         <aside class="story-side">
-                            <div class="card">
+                            <div class="card reveal">
                                 <h3>Start conversation</h3>
                                 <div class="contact-actions">
                                     <a class="button button-primary" href="https://www.linkedin.com/in/mohammad-aghajani-435830206">LinkedIn</a>
@@ -641,11 +945,87 @@
         </main>
 
         <footer class="footer">
-            <div class="footer-inner">
+            <div class="footer-inner reveal">
                 <span>Mohammad Aghajani</span>
                 <span>Product engineering across backend, frontend, mobile, and AI workflows</span>
             </div>
         </footer>
     </div>
+
+    <script>
+        (() => {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+            if (!prefersReducedMotion) {
+                const revealItems = document.querySelectorAll('.reveal');
+                revealItems.forEach((item, index) => {
+                    item.style.setProperty('--reveal-delay', index % 6);
+                });
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.18,
+                    rootMargin: '0px 0px -8% 0px'
+                });
+
+                revealItems.forEach((item) => observer.observe(item));
+            } else {
+                document.querySelectorAll('.reveal').forEach((item) => item.classList.add('is-visible'));
+            }
+
+            if (!finePointer || prefersReducedMotion) {
+                return;
+            }
+
+            const body = document.body;
+            const dot = document.querySelector('.cursor-dot');
+            const ring = document.querySelector('.cursor-ring');
+            const interactive = 'a, button, .button, .card, .timeline-item, .chips li, .hero-point';
+
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let ringX = mouseX;
+            let ringY = mouseY;
+            let rafId = null;
+
+            const render = () => {
+                ringX += (mouseX - ringX) * 0.18;
+                ringY += (mouseY - ringY) * 0.18;
+                dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+                ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+                rafId = requestAnimationFrame(render);
+            };
+
+            const onMove = (event) => {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+                if (!body.classList.contains('cursor-active')) {
+                    body.classList.add('cursor-active');
+                }
+                if (!rafId) {
+                    rafId = requestAnimationFrame(render);
+                }
+            };
+
+            window.addEventListener('mousemove', onMove, { passive: true });
+            window.addEventListener('mouseleave', () => {
+                body.classList.remove('cursor-active', 'cursor-hover', 'cursor-pressed');
+            });
+            window.addEventListener('mousedown', () => body.classList.add('cursor-pressed'));
+            window.addEventListener('mouseup', () => body.classList.remove('cursor-pressed'));
+
+            document.querySelectorAll(interactive).forEach((element) => {
+                element.addEventListener('mouseenter', () => body.classList.add('cursor-hover'));
+                element.addEventListener('mouseleave', () => body.classList.remove('cursor-hover'));
+            });
+        })();
+    </script>
 </body>
 </html>
