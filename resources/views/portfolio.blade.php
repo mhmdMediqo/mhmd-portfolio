@@ -40,7 +40,7 @@
                 radial-gradient(circle at 70% 68%, rgba(255, 175, 120, 0.10), transparent 22%),
                 linear-gradient(180deg, #040a10 0%, #08131d 42%, #03070c 100%);
             overflow-x: hidden;
-            cursor: none;
+            cursor: default;
         }
 
         body::before {
@@ -71,7 +71,11 @@
             animation: ambientPulse 14s var(--ease-out) infinite alternate;
         }
 
-        a { color: inherit; text-decoration: none; }
+        a {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
         .shell { position: relative; z-index: 1; }
         .section-inner,
         .footer-inner {
@@ -243,26 +247,40 @@
         }
 
         .hero-rail {
+            position: relative;
             display: grid;
-            gap: 1rem;
-            padding-left: clamp(1rem, 2vw, 1.5rem);
-            border-left: 1px solid rgba(255,255,255,0.08);
+            gap: 0;
+            padding: clamp(1.15rem, 2.6vw, 1.85rem) 0 clamp(1.15rem, 2.2vw, 1.55rem) clamp(1.1rem, 2.4vw, 1.9rem);
+            border-left: 1px solid rgba(255,255,255,0.1);
+            animation: heroRailIn 860ms var(--ease-out) 120ms both;
+        }
+
+        .hero-rail::before {
+            content: "";
+            position: absolute;
+            left: -1px;
+            top: 0.6rem;
+            bottom: 0.6rem;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(114, 244, 204, 0.72), rgba(105, 184, 255, 0.18) 45%, rgba(105, 184, 255, 0));
+            opacity: 0.7;
+            filter: blur(0.2px);
         }
 
         .hero-point {
             position: relative;
-            padding-bottom: 1rem;
+            padding: 1.05rem 0 1.15rem;
             border-bottom: 1px solid rgba(255,255,255,0.08);
-            transition: transform 260ms var(--ease-out), border-color 200ms ease;
+            transition: transform 220ms ease, border-color 220ms ease;
             will-change: transform;
             opacity: 0;
-            transform: translateX(26px);
-            animation: railSlide 0.9s var(--ease-out) forwards;
+            transform: translateY(16px);
+            animation: heroPointIn 700ms var(--ease-out) forwards;
         }
 
-        .hero-point:nth-child(1) { animation-delay: 0.26s; }
-        .hero-point:nth-child(2) { animation-delay: 0.38s; }
-        .hero-point:nth-child(3) { animation-delay: 0.5s; }
+        .hero-point:nth-child(1) { animation-delay: 0.22s; }
+        .hero-point:nth-child(2) { animation-delay: 0.32s; }
+        .hero-point:nth-child(3) { animation-delay: 0.42s; }
 
         .hero-point::after {
             content: "";
@@ -278,8 +296,8 @@
 
         .hero-point:hover,
         .hero-point:focus-within {
-            transform: translateX(0) translateY(-4px);
-            border-color: rgba(114, 244, 204, 0.22);
+            transform: translateX(6px);
+            border-color: rgba(114, 244, 204, 0.24);
         }
 
         .hero-point:hover::after,
@@ -294,7 +312,7 @@
 
         .hero-point span {
             display: block;
-            margin-bottom: 0.45rem;
+            margin-bottom: 0.5rem;
             color: var(--accent);
             font-size: 0.82rem;
             text-transform: uppercase;
@@ -305,7 +323,7 @@
             display: block;
             font-family: "Sora", sans-serif;
             font-size: clamp(1.1rem, 2vw, 1.55rem);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.55rem;
         }
 
         .hero-point p,
@@ -549,57 +567,6 @@
             transform: translateY(0) scale(1);
         }
 
-        .cursor-dot,
-        .cursor-ring {
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 80;
-            opacity: 0;
-            transition: opacity 160ms ease, transform 200ms ease;
-        }
-
-        .cursor-dot {
-            width: 10px;
-            height: 10px;
-            margin-left: -5px;
-            margin-top: -5px;
-            border-radius: 999px;
-            background: linear-gradient(135deg, var(--accent), #ffffff);
-            box-shadow: 0 0 24px rgba(114, 244, 204, 0.55);
-        }
-
-        .cursor-ring {
-            width: 42px;
-            height: 42px;
-            margin-left: -21px;
-            margin-top: -21px;
-            border-radius: 999px;
-            border: 1px solid rgba(114, 244, 204, 0.45);
-            background: rgba(114, 244, 204, 0.05);
-            backdrop-filter: blur(8px);
-        }
-
-        .cursor-active .cursor-dot,
-        .cursor-active .cursor-ring {
-            opacity: 1;
-        }
-
-        .cursor-hover .cursor-ring {
-            transform: scale(1.45);
-            border-color: rgba(166, 230, 255, 0.66);
-            background: rgba(105, 184, 255, 0.08);
-        }
-
-        .cursor-pressed .cursor-dot {
-            transform: scale(0.7);
-        }
-
-        .cursor-pressed .cursor-ring {
-            transform: scale(0.92);
-        }
-
         @keyframes heroRise {
             to {
                 opacity: 1;
@@ -607,10 +574,25 @@
             }
         }
 
-        @keyframes railSlide {
+        @keyframes heroRailIn {
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heroPointIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
@@ -641,8 +623,6 @@
         }
 
         @media (max-width: 980px) {
-            body { cursor: auto; }
-
             .hero {
                 min-height: auto;
             }
@@ -661,17 +641,14 @@
             }
 
             .hero-rail {
-                padding-left: 0;
-                padding-top: 0.75rem;
+                padding: 0.75rem 0 0;
                 border-left: 0;
                 border-top: 1px solid rgba(255,255,255,0.08);
             }
-        }
 
-        @media (pointer: coarse) {
-            body { cursor: auto; }
-            .cursor-dot,
-            .cursor-ring { display: none; }
+            .hero-rail::before {
+                display: none;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -683,21 +660,15 @@
 
             .reveal,
             .hero-copy > *,
+            .hero-rail,
             .hero-point {
                 opacity: 1 !important;
                 transform: none !important;
             }
-
-            body { cursor: auto; }
-            .cursor-dot,
-            .cursor-ring { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="cursor-dot" aria-hidden="true"></div>
-    <div class="cursor-ring" aria-hidden="true"></div>
-
     <div class="shell">
         <main id="home">
             <section class="hero">
@@ -955,7 +926,6 @@
     <script>
         (() => {
             const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const finePointer = window.matchMedia('(pointer: fine)').matches;
 
             if (!prefersReducedMotion) {
                 const revealItems = document.querySelectorAll('.reveal');
@@ -979,52 +949,6 @@
             } else {
                 document.querySelectorAll('.reveal').forEach((item) => item.classList.add('is-visible'));
             }
-
-            if (!finePointer || prefersReducedMotion) {
-                return;
-            }
-
-            const body = document.body;
-            const dot = document.querySelector('.cursor-dot');
-            const ring = document.querySelector('.cursor-ring');
-            const interactive = 'a, button, .button, .card, .timeline-item, .chips li, .hero-point';
-
-            let mouseX = window.innerWidth / 2;
-            let mouseY = window.innerHeight / 2;
-            let ringX = mouseX;
-            let ringY = mouseY;
-            let rafId = null;
-
-            const render = () => {
-                ringX += (mouseX - ringX) * 0.18;
-                ringY += (mouseY - ringY) * 0.18;
-                dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-                ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
-                rafId = requestAnimationFrame(render);
-            };
-
-            const onMove = (event) => {
-                mouseX = event.clientX;
-                mouseY = event.clientY;
-                if (!body.classList.contains('cursor-active')) {
-                    body.classList.add('cursor-active');
-                }
-                if (!rafId) {
-                    rafId = requestAnimationFrame(render);
-                }
-            };
-
-            window.addEventListener('mousemove', onMove, { passive: true });
-            window.addEventListener('mouseleave', () => {
-                body.classList.remove('cursor-active', 'cursor-hover', 'cursor-pressed');
-            });
-            window.addEventListener('mousedown', () => body.classList.add('cursor-pressed'));
-            window.addEventListener('mouseup', () => body.classList.remove('cursor-pressed'));
-
-            document.querySelectorAll(interactive).forEach((element) => {
-                element.addEventListener('mouseenter', () => body.classList.add('cursor-hover'));
-                element.addEventListener('mouseleave', () => body.classList.remove('cursor-hover'));
-            });
         })();
     </script>
 </body>
