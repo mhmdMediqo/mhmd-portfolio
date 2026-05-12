@@ -39,3 +39,4 @@ After the Pages workflow succeeds and GitHub Pages is enabled for the repository
 - This environment did not include PHP or Composer, so the Laravel app could not be executed here.
 - The online preview is static because this portfolio page does not currently require server-side Laravel behavior.
 - Update the placeholder email and any project descriptions with your real details before sharing the final portfolio.
+- Publish trigger refresh: 2026-05-12.
