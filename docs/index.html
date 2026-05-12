@@ -139,7 +139,7 @@
         .hero-copy h1 {
             margin: 0;
             font-family: "Sora", sans-serif;
-            font-size: clamp(3rem, 6vw, 5.35rem);
+            font-size: clamp(2.45rem, 4.8vw, 4.35rem);
             line-height: 0.95;
             max-width: 9ch;
         }
