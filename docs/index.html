@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mohammad Aghajani | Flutter Product Engineer</title>
+    <title>Mohammad Aghajani | Full-Stack Product Engineer</title>
     <meta
         name="description"
-        content="Personal portfolio for Mohammad Aghajani, a Flutter engineer building healthcare, B2B, and consumer products across web and mobile."
+        content="Personal portfolio for Mohammad Aghajani, a full-stack product engineer working across Laravel, frontend systems, Flutter mobile apps, and AI-driven workflows."
     >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,12 +141,12 @@
             font-family: "Sora", sans-serif;
             font-size: clamp(3rem, 6vw, 5.35rem);
             line-height: 0.95;
-            max-width: 8.8ch;
+            max-width: 9ch;
         }
 
         .hero-copy p {
             margin: 0;
-            max-width: 35rem;
+            max-width: 38rem;
             color: var(--muted);
             font-size: clamp(0.98rem, 1.2vw, 1.08rem);
             line-height: 1.75;
@@ -239,7 +239,7 @@
             font-family: "Sora", sans-serif;
             font-size: clamp(1.85rem, 3.6vw, 3rem);
             line-height: 1.03;
-            max-width: 13ch;
+            max-width: 15ch;
         }
 
         .section-heading p {
@@ -403,10 +403,10 @@
                             <span class="brand-mark">MA</span>
                             <span>Mohammad Aghajani</span>
                         </div>
-                        <span class="eyebrow">Flutter • Web + Mobile • Healthcare • B2B</span>
-                        <h1>Flutter products built for healthcare, B2B, and consumer apps.</h1>
+                        <span class="eyebrow">Backend • Frontend • Mobile • AI Workflows</span>
+                        <h1>I build products across backend, frontend, mobile, and AI workflows.</h1>
                         <p>
-                            I design and ship polished Flutter experiences with strong architecture, API integration, and performance work across web and mobile. The focus is clean product execution, clear interfaces, and software that keeps scaling without getting messy.
+                            My work spans Laravel backends, Blade and Vite frontends, Flutter mobile apps, GitHub CI/CD workflows, and AI-assisted systems. I care about clear product thinking, reliable execution, and software that stays maintainable as it grows.
                         </p>
                         <div class="hero-actions">
                             <a class="button button-primary" href="https://www.linkedin.com/in/mohammad-aghajani-435830206">Start conversation</a>
@@ -418,17 +418,17 @@
                         <article class="hero-point">
                             <span>Now</span>
                             <strong>TECHTiQ</strong>
-                            <p>Healthcare web product work with Flutter, secure flows, real-time communication, and close collaboration with product, design, and QA.</p>
+                            <p>Working on healthcare product delivery with strong attention to reliability, clear collaboration, and production-minded engineering decisions.</p>
                         </article>
                         <article class="hero-point">
-                            <span>Across products</span>
-                            <strong>Quiz, fitness, B2B, and logistics</strong>
-                            <p>Recent work spans learning, fitness tracking, search workflows, and transport operations with responsive UI and reliable API integration.</p>
+                            <span>Full-stack work</span>
+                            <strong>Searchha</strong>
+                            <p>Handled the backend with Laravel, the frontend with Blade and Vite, and the mobile application with Flutter in one B2B product workflow.</p>
                         </article>
                         <article class="hero-point">
-                            <span>Approach</span>
-                            <strong>Clean structure over noisy complexity</strong>
-                            <p>Strong frontend craft, practical architecture, and product decisions that stay understandable for both users and teams.</p>
+                            <span>Strengths</span>
+                            <strong>Review, debugging, delivery, and prompts</strong>
+                            <p>I contribute through code review, debugging, leadership, AI agents, and practical prompt writing that helps product teams move faster.</p>
                         </article>
                     </div>
                 </div>
@@ -438,36 +438,38 @@
                 <div class="section-inner">
                     <div class="section-heading">
                         <span class="micro-label">About</span>
-                        <h2>Product-minded Flutter work with a sharp UI eye.</h2>
+                        <h2>Product-focused engineering across web, mobile, and AI-driven systems.</h2>
                         <p>
-                            My work sits where frontend polish, dependable architecture, and real delivery pressure meet. I care about motion, clarity, and interface quality, but just as much about the code structure and API decisions that keep a product stable after launch.
+                            My work sits where product clarity, dependable engineering, and practical delivery meet. I care about how a product feels in use, how cleanly it is built under the surface, and how well a team can keep shipping without losing structure.
                         </p>
                     </div>
                     <div class="grid-12">
                         <div class="story-copy">
                             <p>
-                                Across healthcare, consumer, B2B, and fitness products, I usually work on the parts that most affect day-to-day product quality: responsive interfaces, data flow, performance, debugging, and the details that make software feel intentional instead of generic.
+                                Across healthcare, consumer, B2B, fitness, and learning products, I have worked on the parts that matter most to day-to-day product quality: backend structure, frontend implementation, mobile delivery, data flow, debugging, and the decisions that keep a system understandable as it grows.
                             </p>
                             <p>
-                                The throughline is simple: build products that look calm, work fast, and remain maintainable as features grow.
+                                The throughline is simple: build useful software, keep the architecture clean, and make product execution feel calm instead of chaotic.
                             </p>
                             <ul class="chips" aria-label="Core strengths">
-                                <li>Flutter web and mobile</li>
-                                <li>Product UI implementation</li>
-                                <li>Healthcare product delivery</li>
-                                <li>API integration</li>
-                                <li>Performance optimization</li>
-                                <li>Clean architecture</li>
+                                <li>Flutter</li>
+                                <li>Laravel</li>
+                                <li>GitHub CI/CD workflows</li>
+                                <li>AI agents</li>
+                                <li>Prompt writing</li>
+                                <li>Leadership</li>
+                                <li>Code review</li>
+                                <li>Debugging</li>
                             </ul>
                         </div>
                         <aside class="story-side">
                             <div class="card">
                                 <h3>Current direction</h3>
-                                <p>Healthcare-focused Flutter work with web performance, secure flows, and reliable product delivery at the center.</p>
+                                <p>Full-stack product work across healthcare, B2B systems, frontend implementation, backend architecture, and AI-assisted workflows.</p>
                             </div>
                             <div class="card">
                                 <h3>Working style</h3>
-                                <p>Thoughtful UI, clean boundaries, steady iteration, and shipping in steps that keep the product understandable.</p>
+                                <p>Clear ownership, practical engineering choices, strong review habits, and steady execution from idea to shipped product.</p>
                             </div>
                         </aside>
                     </div>
@@ -478,9 +480,9 @@
                 <div class="section-inner">
                     <div class="section-heading">
                         <span class="micro-label">Resume</span>
-                        <h2>Recent roles and the product contexts behind them.</h2>
+                        <h2>Recent roles across product, platform, and engineering delivery.</h2>
                         <p>
-                            A tighter snapshot of the work across healthcare, consumer, learning, fitness, logistics, and B2B products.
+                            A tighter snapshot of the work across healthcare, consumer apps, full-stack delivery, learning, fitness, logistics, and B2B products.
                         </p>
                     </div>
                     <div class="experience-grid">
@@ -491,7 +493,7 @@
                                 <span>Healthcare</span>
                             </div>
                             <h3>Flutter Team Lead</h3>
-                            <p>Designing and building a healthcare web application with scalable architecture, code review, strong performance, real-time communication, and secure data handling.</p>
+                            <p>Designing and delivering a healthcare web product with scalable architecture, code review, performance work, real-time communication, and secure data handling.</p>
                         </article>
 
                         <article class="timeline-item">
@@ -520,8 +522,8 @@
                                 <span>Aug 2024</span>
                                 <span>B2B</span>
                             </div>
-                            <h3>Senior Flutter Developer</h3>
-                            <p>Supported a B2B product with scalable architecture, API integration, usability iteration, app analytics, and strong product-focused implementation.</p>
+                            <h3>Full-Stack Product Engineer</h3>
+                            <p>Worked full stack on Searchha with Laravel on the backend, Blade and Vite on the frontend, and Flutter for the mobile app, helping shape product flow, integration logic, and day-to-day delivery.</p>
                         </article>
 
                         <article class="timeline-item timeline-item--wide">
@@ -546,7 +548,7 @@
                                 <span>Logistics</span>
                             </div>
                             <h3>Flutter Developer</h3>
-                            <p>Developed a transport application for moving-company staff with user-friendly Flutter UI, real-time tracking, operational efficiency improvements, and day-to-day debugging.</p>
+                            <p>Developed a transport application for moving-company staff with user-friendly UI, real-time tracking, operational efficiency improvements, and day-to-day debugging.</p>
                         </article>
 
                         <article class="timeline-item">
@@ -556,7 +558,7 @@
                                 <span>Contract</span>
                             </div>
                             <h3>Flutter Developer</h3>
-                            <p>Delivered Android, iOS, and web work with Flutter using Get It, Bloc and Cubit, Dio, and repository-oriented architecture patterns.</p>
+                            <p>Delivered Android, iOS, and web work using Get It, Bloc and Cubit, Dio, and repository-oriented architecture patterns.</p>
                         </article>
 
                         <article class="timeline-item">
@@ -566,7 +568,7 @@
                                 <span>Automation</span>
                             </div>
                             <h3>Flutter Developer</h3>
-                            <p>Worked on the automation application for Mobin Khodro with Flutter and Git-based collaboration in an Iran-based freelance setup.</p>
+                            <p>Worked on the automation application for Mobin Khodro with product implementation, debugging, and Git-based collaboration in a freelance setup.</p>
                         </article>
 
                         <article class="timeline-item">
@@ -586,23 +588,23 @@
                 <div class="section-inner">
                     <div class="section-heading">
                         <span class="micro-label">Focus</span>
-                        <h2>What the work usually centers on.</h2>
+                        <h2>How I usually contribute to a team.</h2>
                         <p>
-                            The strongest fit is where frontend quality, product clarity, and dependable engineering all need to move together.
+                            The strongest fit is where product thinking, engineering clarity, and steady delivery all need to move together.
                         </p>
                     </div>
                     <div class="focus-grid">
                         <article class="card">
-                            <h3>Product UI</h3>
-                            <p>Responsive Flutter interfaces, interaction polish, and screen systems that stay readable and calm on web and mobile.</p>
+                            <h3>Full-stack delivery</h3>
+                            <p>Backend, frontend, and mobile work that stays aligned around the actual product instead of drifting into disconnected pieces.</p>
                         </article>
                         <article class="card">
-                            <h3>Architecture</h3>
-                            <p>Practical state boundaries, API integration, clean feature structure, and code that stays maintainable as the product grows.</p>
+                            <h3>Review and debugging</h3>
+                            <p>Code review, problem solving, debugging, and technical judgment that help keep product quality high without slowing the team down.</p>
                         </article>
                         <article class="card">
-                            <h3>Delivery</h3>
-                            <p>Healthcare, B2B, logistics, learning, and fitness products where quality, speed, and trust all matter at the same time.</p>
+                            <h3>AI-assisted execution</h3>
+                            <p>Prompt writing, AI agents, delivery workflows, and practical automation that make engineering work faster and more repeatable.</p>
                         </article>
                     </div>
                 </div>
@@ -612,7 +614,7 @@
                 <div class="section-inner">
                     <div class="section-heading">
                         <span class="micro-label">Contact</span>
-                        <h2>Open for strong Flutter product work.</h2>
+                        <h2>Open for strong product and engineering work.</h2>
                         <p>
                             The best direct contact on this page is LinkedIn, with GitHub included as a second reference point for current work.
                         </p>
@@ -621,7 +623,7 @@
                         <div class="story-copy">
                             <div class="card">
                                 <h3>Best fit</h3>
-                                <p>Healthcare products, senior Flutter roles, web and mobile UI implementation, API-heavy apps, and teams that want clean execution without unnecessary complexity.</p>
+                                <p>Full-stack product roles, Laravel and frontend systems, mobile delivery, AI-agent workflows, code review, debugging, and teams that value clear ownership and reliable execution.</p>
                             </div>
                         </div>
                         <aside class="story-side">
@@ -641,7 +643,7 @@
         <footer class="footer">
             <div class="footer-inner">
                 <span>Mohammad Aghajani</span>
-                <span>Flutter product engineering across web and mobile</span>
+                <span>Product engineering across backend, frontend, mobile, and AI workflows</span>
             </div>
         </footer>
     </div>
