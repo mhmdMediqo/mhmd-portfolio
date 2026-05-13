@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -474,9 +474,9 @@
                             data-cinematic-video
                             muted
                             playsinline
-                            preload="metadata"
-                            poster="data:image/jpeg;base64,/9j//gAQTGF2YzYwLjMxLjEwMgD/2wBDAAgMDA4MDhAQEBAQEBMSExQUFBMTExMUFBQVFRUZGRkVFRUUFBUVGBgZGRscGxoaGRocHB4eHiQkIiIqKiszMz7/xACwAAACAgMBAQAAAAAAAAAAAAAAAQUEBgIDBwgBAAIDAQEBAAAAAAAAAAAAAAABAgMEBQYHEAABAwIEAwYEBQUBAQEBAAABAgMEERIhMUEFQVFhcYETIoGRBzKxQlKxwdEUI0Lh8BWCM0M0NHOiJBEAAQEGAwYFBQEBAQEAAAAAAAECAwQREiExQQVRYXGBkfAicYGhsVLh8RQyQpJDU7L/2gAMAwEAAhEDEQA/APAaRJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lID1K22/Wd6huqZqDikfSsO4MaO6xv5qq6s57wOGl59Uydn7mQd7K5MbB1LqxlGEOozOdT0sk9h+N4Nyp7J+M1HOPy6oypaz1V9REi0k92cW+JXQhPILjL7nEouMvuZrFbVnJjS2eSWd3aNYhG0dj3QLK7m6VktZsw0lJWUj3e3e4nW7mriXUUMs0T+oH7u0h0nn7tR0k9f0fVNSdIzl7vC0LaQx1J6hNp+Kusq4M9UwQkq6VwqjseTg2v8AL0J8FbL7S11lTR2OmJmGRsG4HO7KQnWFa4eI2uI7sR4b8x4n1JQ1iqpY52tT8rRruU6D7fckVpLm0lvUddtXktC1lyRjH7mU8c6nS1m+aVhBOhY50g3uo1p48u+3E1a3KfSLcqs1dX1cVZCND3M/wB3xLtrjnSwbT5Vd4k2nP4t0dSZ+5J9QeQ6rX4n0DhzB9R4s8QqJQ1mP1Lf9R8n0Wj4d0UOe0k8sW0D3bP4fSW3KteG1fN0+S32b4xPL3hM+I9V1UfWPEV0t7iGrU7nLh1+uW1wFfTnwnIuHc1T8Ucb8ri3t6KnlljOD8V7dPIU0q8k9Shq9H0du5ZbQx0nY+Vn0P2HUsvN+E0A+qL0OaW3a5XbkV9Z8V0rs8XQqWn0RrH9zLdya1fKmK8JpGVd4twSTl7m47VQ4eN8L1VWxzM5T3c8+S2JY1J3xkA3aVttz9bUNRFZTzSv9VwQ8gHlfYVQ+JdP6WmepPqV+UOZ3q3mK2JGlq5mG6wGAnx7Hdc1z0dJbS00iR1Gsq2Uv9xxFQex7W0HgBfJb0XwXHXbM2M+1cJw5n1Z6jf1Wlly8YjW1nSNA9E9x2vz9ySzSsaFSp7hVxG1iN4w7JvL7eQONo3v9V+8FZ8Q8n0nq6Q1RZQ1mI4J6j8rx8irjE5j3GmldRSl1fXwSVtZJcGlI6lkFh2K0z4nkl2X3f9kDvyWm2rT6abN7QwO3eSmWj0h5m+qP5rwVzsPE0tPU9x+pnm3xV9l0l2r4t1nZb0v7SxFzG1HNeQ9k6vM9tP8A1Vm1y+hdH6L6k9NTQK2rM2G57h0Wn0c2Qhq6Z9LxQ1qFz2W3n7lX3o7+g9D8m3dW8QkUvQ4kjfM4+8Vn+1K0M7frV2ndM2w8Fj3wX2Sh1k0fVdTX0svlH1wANm5V8Q8TvD7h6pmtk6Q6fPl7Jqv8A4V7Zf4cM2q1w7k1uS7P16+5V+E1XQ1+o6Q1vGlVj0+I9rj1L6rI1lZ6iv6h1mnjm7m8U6j2I3Vqkz0rU1Mc0lPp5JYxv6cX3FuF3LJfP8A1Lq1XU+KllvFvD4mZSk6g4WNu9v0X1p7n11aLq6lPFLy1Q5BvybZlRz7aLjS2ftLdKX6P1TjxfThx1uYd3T9FjStVj1h7Vq5uU4s5g2sFNHTjuL4eM4qndZ4tT6Pqz1r1a9S7o6mZlXgS8c8rR2lriHE6EOQdA7l6or6m1dTURvfZ3zv6oNqT5c0m7jG0rP0kNPN9V0m+fUQ3eSm+SGl5ct3l9Fh7fQKzX1z1RimHMc0vL5C8t4uT9N8QfY9V3ivl9nGQp6Y3kQ4tt2X1eWfC8b0tR1FfQ4+TO2mWnfZc4a3Sx7Etz3Vtq3L8bI67n9P6T1r0sm5m1Q0jlwmf9Nc7gs5s2vd4l6p8QdTuNQ1VdQxF9R4sd0W9X2X2W0C6t4WZ2aSv9M0Gf2uL+Wb0d+L6c1r1HfGkqH9T4kY8qL83j9Etv6n6lq2aX0+t8VY13g9+qZ8Twmr6q2x2w1Y6qv1zG6vL3g7N3n2Wm+c9H0dJ1VfS0zvBq3M+nO6j8lreM7n4b8ZzU+3VfW3VdQX1WQvG6bRbJ0m+MfI9Tk+vVw6Pq2t9K5XlQ6r1xv8A2U+8d5kBvQqShJm7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg7lJg//Z"
-                            src="data:video/mp4;base64,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"                        ></video>
+                            preload="auto"
+                            src="{{ asset('video/hero-cinematic.mp4') }}"
+                        ></video>
                     </div>
                     <div class="hero-scrim" aria-hidden="true"></div>
 
@@ -726,77 +726,66 @@
 
             const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-            let duration = 0;
-            let targetTime = 0;
-            let renderedTime = 0;
-            let rafId = null;
-            let lastCommittedTime = -1;
+            /** Usable timeline length (stay slightly shy of EOF for stability). */
+            const timelineEnd = (d) =>
+                Number.isFinite(d) && d > 0 ? Math.max(d - 0.04, 0) : 0;
 
-            const queueSeek = () => {
-                if (rafId !== null || prefersReducedMotion || duration <= 0) {
+            let duration = 0;
+
+            /** Progress 0 = top of hero pin, 1 = scrolled through hero. Scroll up decreases (video rewinds). */
+            const readHeroProgress = () => {
+                const maxScroll = Math.max(hero.offsetHeight - window.innerHeight, 1);
+                const top = hero.getBoundingClientRect().top;
+                return clamp(-top / maxScroll, 0, 1);
+            };
+
+            const syncVideoWithScroll = () => {
+                const progress = readHeroProgress();
+                hero.style.setProperty("--hero-progress", progress.toFixed(4));
+
+                if (prefersReducedMotion || duration <= 0) {
                     return;
                 }
 
-                rafId = window.requestAnimationFrame(() => {
-                    rafId = null;
-                    renderedTime += (targetTime - renderedTime) * 0.18;
+                const end = timelineEnd(duration);
+                const targetTime = progress * end;
 
-                    if (Math.abs(renderedTime - targetTime) < 0.01) {
-                        renderedTime = targetTime;
+                if (Math.abs(video.currentTime - targetTime) > 1 / 72) {
+                    try {
+                        video.currentTime = targetTime;
+                    } catch {
+                        // Metadata or decoder not ready yet.
                     }
+                }
 
-                    if (Math.abs(renderedTime - lastCommittedTime) > 1 / 30) {
-                        try {
-                            if (typeof video.fastSeek === "function" && Math.abs(video.currentTime - renderedTime) > 0.18) {
-                                video.fastSeek(renderedTime);
-                            } else {
-                                video.currentTime = renderedTime;
-                            }
-                            lastCommittedTime = renderedTime;
-                        } catch (error) {
-                            // Ignore transient seek failures while metadata settles.
-                        }
-                    }
-
-                    if (Math.abs(renderedTime - targetTime) > 0.01) {
-                        queueSeek();
-                    }
-                });
-            };
-
-            const updateHeroProgress = () => {
-                const totalScroll = Math.max(hero.offsetHeight - window.innerHeight, 1);
-                const progress = clamp((window.scrollY - hero.offsetTop) / totalScroll, 0, 1);
-
-                hero.style.setProperty("--hero-progress", progress.toFixed(4));
-                if (duration > 0 && !prefersReducedMotion) {
-                    targetTime = progress * Math.max(duration - 0.08, 0);
-                    queueSeek();
+                if (!video.paused) {
+                    video.pause();
                 }
             };
 
             video.muted = true;
             video.playsInline = true;
+            video.removeAttribute("loop");
+            video.removeAttribute("autoplay");
 
             video.addEventListener("loadedmetadata", () => {
                 duration = video.duration || 0;
 
-                if (prefersReducedMotion && duration > 0) {
+                if (prefersReducedMotion && timelineEnd(duration) > 0) {
                     try {
-                        video.currentTime = Math.min(duration * 0.12, duration);
-                    } catch (error) {
-                        // Keep poster if the browser blocks the initial seek.
+                        video.currentTime = Math.min(duration * 0.12, timelineEnd(duration));
+                    } catch {
+                        //
                     }
                     return;
                 }
 
-                video.pause();
-                updateHeroProgress();
+                syncVideoWithScroll();
             });
 
-            updateHeroProgress();
-            window.addEventListener("scroll", updateHeroProgress, { passive: true });
-            window.addEventListener("resize", updateHeroProgress);
+            syncVideoWithScroll();
+            window.addEventListener("scroll", syncVideoWithScroll, { passive: true });
+            window.addEventListener("resize", syncVideoWithScroll);
         })();
     </script>
 </body>
