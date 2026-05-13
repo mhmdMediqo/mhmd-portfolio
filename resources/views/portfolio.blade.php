@@ -74,68 +74,28 @@
             cursor: pointer;
         }
         .shell { position: relative; z-index: 1; }
+
+        [data-reveal] {
+            opacity: 0;
+            transform: translate3d(0, 30px, 0) scale(0.992);
+            transition: opacity 620ms cubic-bezier(0.22, 1, 0.36, 1), transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        [data-reveal].is-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+        }
         .section-inner,
         .footer-inner {
             width: min(calc(100% - 2rem), var(--max));
             margin: 0 auto;
         }
 
-        section { padding: var(--section-pad) 0; }
-
-        .hero {
-            --hero-progress: 0;
-            min-height: 220svh;
-            padding: 0;
-            position: relative;
-        }
-
-        .hero-stage {
-            position: sticky;
-            top: 0;
-            min-height: 100svh;
-            overflow: clip;
-            background: #030811;
-        }
-
-        .hero-media,
-        .hero-scrim {
-            position: absolute;
-            inset: 0;
-        }
-
-        .hero-media {
-            overflow: hidden;
-        }
-
-        .hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center center;
-            filter: saturate(0.92) contrast(1.04) brightness(0.68);
-            transition: filter 220ms ease;
-            transform:
-                scale(calc(1.06 + (var(--hero-progress) * 0.1)))
-                translateY(calc(var(--hero-progress) * 2.8rem));
-            transform-origin: center center;
-            will-change: transform;
-        }
-
-        .hero-scrim {
-            background:
-                linear-gradient(180deg, rgba(3, 8, 17, 0.18) 0%, rgba(3, 8, 17, 0.06) 22%, rgba(3, 8, 17, 0.34) 58%, rgba(3, 8, 17, 0.86) 100%),
-                linear-gradient(90deg, rgba(3, 8, 17, 0.76) 0%, rgba(3, 8, 17, 0.18) 40%, rgba(3, 8, 17, 0.54) 100%);
-        }
-
-        .hero-grid {
-            position: relative;
-            z-index: 1;
-            width: min(calc(100% - 2rem), var(--max));
-            min-height: 100svh;
-            margin: 0 auto;
-            padding: clamp(1.2rem, 2vw, 1.6rem) 0 clamp(2rem, 4.5vw, 3.5rem);
-            display: grid;
-            align-content: space-between;
+        section {
+            padding: var(--section-pad) 0;
+            content-visibility: auto;
+            contain-intrinsic-size: 1px 920px;
         }
 
         .identity {
@@ -177,71 +137,6 @@
             background: linear-gradient(90deg, var(--accent), transparent);
         }
 
-        .hero-copy {
-            max-width: min(34rem, 100%);
-            display: grid;
-            gap: 1rem;
-            align-self: end;
-            transform: translateY(calc(var(--hero-progress) * 4.5rem));
-            opacity: max(0, calc(1 - (var(--hero-progress) * 1.15)));
-            will-change: transform, opacity;
-        }
-
-        .hero-copy p {
-            margin: 0;
-            max-width: 29rem;
-            color: rgba(238, 245, 255, 0.78);
-            font-size: clamp(1rem, 1.2vw, 1.08rem);
-            line-height: 1.85;
-        }
-
-        .hero-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-            gap: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            opacity: max(0, calc(1 - (var(--hero-progress) * 0.95)));
-            transform: translateY(calc(var(--hero-progress) * 2rem));
-            will-change: transform, opacity;
-        }
-
-        .hero-signal {
-            display: grid;
-            gap: 0.4rem;
-        }
-
-        .hero-signal strong {
-            margin: 0;
-            font-family: "Sora", sans-serif;
-            font-size: clamp(1.5rem, 2.8vw, 2.6rem);
-            line-height: 0.98;
-            max-width: 10ch;
-        }
-
-        .hero-signal span,
-        .hero-scroll {
-            color: rgba(238, 245, 255, 0.64);
-            font-size: 0.92rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .hero-scroll {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            white-space: nowrap;
-        }
-
-        .hero-scroll::before {
-            content: "";
-            width: 3.25rem;
-            height: 1px;
-            background: linear-gradient(90deg, rgba(114, 244, 204, 0), rgba(114, 244, 204, 0.82));
-        }
-
         .button {
             min-height: 50px;
             padding: 0 1.2rem;
@@ -268,7 +163,6 @@
             background: rgba(255,255,255,0.03);
         }
 
-        .hero-point p,
         .story-copy p,
         .card p,
         .timeline-item p,
@@ -292,6 +186,23 @@
             max-width: 13ch;
         }
 
+        .intro-name {
+            display: block;
+            margin-bottom: 0.85rem;
+            font-size: clamp(2.2rem, 5.4vw, 4.2rem);
+            line-height: 0.92;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+            background: linear-gradient(135deg, #7cf7d1 0%, #79c6ff 48%, #ffb57b 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        #about .section-heading h2 {
+            max-width: none;
+        }
+
         .section-heading p {
             margin: 0;
             max-width: 44rem;
@@ -310,6 +221,8 @@
 
         .card,
         .timeline-item {
+            transform: translateZ(0);
+            transition: transform 280ms ease, border-color 280ms ease, background 280ms ease;
             border: 1px solid var(--line);
             border-radius: 22px;
             background: linear-gradient(180deg, rgba(10, 19, 30, 0.72), rgba(6, 12, 20, 0.42));
@@ -317,6 +230,13 @@
         }
 
         .card { padding: 1.15rem; }
+
+        .card:hover,
+        .timeline-item:hover {
+            transform: translate3d(0, -5px, 0);
+            border-color: rgba(114, 244, 204, 0.28);
+            background: linear-gradient(180deg, rgba(13, 24, 38, 0.76), rgba(8, 15, 25, 0.48));
+        }
 
         .card h3,
         .timeline-item h3 {
@@ -335,6 +255,9 @@
         }
 
         .chips li {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 0.65rem 0.9rem;
             border-radius: 999px;
             border: 1px solid var(--line);
@@ -417,20 +340,9 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .hero-copy,
-            .hero-meta,
-            .hero-video {
-                opacity: 1;
-                transform: none;
-            }
         }
 
         @media (max-width: 980px) {
-            .hero {
-                min-height: 180svh;
-            }
-
-            .hero-grid,
             .grid-12,
             .focus-grid,
             .experience-grid {
@@ -443,100 +355,46 @@
                 grid-column: span 1;
             }
 
-            .hero-grid {
-                padding: 1rem 0 1.5rem;
-            }
-
-            .hero-copy {
-                gap: 0.85rem;
-                max-width: 100%;
-            }
-
-            .hero-meta {
-                align-items: start;
-                flex-direction: column;
-            }
-
-            .hero-signal strong {
-                max-width: 12ch;
-            }
         }
     </style>
 </head>
 <body>
     <div class="shell">
         <main id="home">
-            <section class="hero" data-cinematic-hero>
-                <div class="hero-stage">
-                    <div class="hero-media" aria-hidden="true">
-                        <video
-                            class="hero-video"
-                            data-cinematic-video
-                            muted
-                            playsinline
-                            preload="auto"
-                            src="{{ asset('video/hero-cinematic.mp4') }}"
-                        ></video>
-                    </div>
-                    <div class="hero-scrim" aria-hidden="true"></div>
-
-                    <div class="hero-grid">
-                        <div class="hero-copy">
-                            <div class="identity" aria-label="Portfolio owner">
-                                <span class="brand-mark">MA</span>
-                                <span>Mohammad Aghajani</span>
-                            </div>
-                            <span class="eyebrow">Cinematic Scroll</span>
-                            <p>
-                                A minimal opening built around motion, atmosphere, and controlled pacing.
-                            </p>
-                        </div>
-
-                        <div class="hero-meta" aria-label="Hero cues">
-                            <div class="hero-signal">
-                                <span>Section One</span>
-                                <strong>Motion first. Introduction next.</strong>
-                            </div>
-                            <div class="hero-scroll">Scroll to enter</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section id="about">
                 <div class="section-inner">
-                    <div class="section-heading">
-                        <span class="micro-label">About</span>
-                        <h2>Flutter engineer building healthcare, B2B, and consumer products.</h2>
+                    <div class="section-heading" data-reveal>
+                        <span class="micro-label">Introduction</span>
+                        <h2><span class="intro-name">Mohammad Aghajani</span>Flutter engineer focused on AI agents, prompt engineering, and product automation.</h2>
                         <p>
-                            I work where frontend polish, dependable architecture, and real delivery pressure meet. The focus is calm interfaces, strong implementation quality, and software that stays clear as products grow.
+                            I build practical AI-powered products with reliable architecture, clean UI delivery, and structured prompt systems that stay maintainable as scope grows.
                         </p>
                     </div>
-                    <div class="grid-12">
+                    <div class="grid-12" data-reveal>
                         <div class="story-copy">
                             <p>
-                                Across healthcare, consumer, B2B, and fitness products, I usually work on the parts that most affect day-to-day product quality: responsive interfaces, data flow, performance, debugging, and the details that make software feel intentional instead of generic.
+                                I work on AI-agent workflows end to end: prompt design, guardrails, orchestration patterns, tool integration, and production-ready interfaces across web and mobile.
                             </p>
                             <p>
-                                The throughline is simple: build products that look calm, work fast, and remain maintainable as features grow.
+                                The core approach is simple: clear prompts, measurable behavior, and systems that deliver useful automation without losing product quality.
                             </p>
                             <ul class="chips" aria-label="Core strengths">
+                                <li>AI agents workflows</li>
+                                <li>Prompt engineering</li>
+                                <li>Tool calling and orchestration</li>
                                 <li>Flutter web and mobile</li>
-                                <li>Product UI implementation</li>
-                                <li>Healthcare product delivery</li>
-                                <li>API integration</li>
+                                <li>Laravel APIs integration</li>
                                 <li>Performance optimization</li>
-                                <li>Clean architecture</li>
                             </ul>
                         </div>
-                        <aside class="story-side">
-                            <div class="card">
+                        <aside class="story-side" data-reveal>
+                            <div class="card" data-reveal>
                                 <h3>Current direction</h3>
-                                <p>Healthcare-focused Flutter work with web performance, secure flows, and reliable product delivery at the center.</p>
+                                <p>Building AI-agent features with robust prompting, evaluation loops, and production-grade product implementation.</p>
                             </div>
-                            <div class="card">
+                            <div class="card" data-reveal>
                                 <h3>Working style</h3>
-                                <p>Thoughtful UI, clean boundaries, steady iteration, and shipping in steps that keep the product understandable.</p>
+                                <p>Prompt-first thinking, clear system boundaries, fast iteration, and shipping agent experiences that stay predictable.</p>
                             </div>
                         </aside>
                     </div>
@@ -545,15 +403,15 @@
 
             <section id="experience">
                 <div class="section-inner">
-                    <div class="section-heading">
+                    <div class="section-heading" data-reveal>
                         <span class="micro-label">Resume</span>
                         <h2>Recent roles and the product contexts behind them.</h2>
                         <p>
                             A tighter snapshot of the work across healthcare, consumer, learning, fitness, logistics, and B2B products.
                         </p>
                     </div>
-                    <div class="experience-grid">
-                        <article class="timeline-item">
+                    <div class="experience-grid" data-reveal>
+                        <article class="timeline-item" data-reveal>
                             <div class="timeline-meta">
                                 <span>TECHTiQ</span>
                                 <span>Dec 2024 - Present</span>
@@ -563,7 +421,7 @@
                             <p>Designing and building a healthcare web application with scalable architecture, code review, strong performance, real-time communication, and secure data handling.</p>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item" data-reveal>
                             <div class="timeline-meta">
                                 <span>Joghd</span>
                                 <span>Jun 2024 - Oct 2024</span>
@@ -573,7 +431,7 @@
                             <p>Built an interactive quiz product for Iranian users with cross-platform UI work, backend integration, testing, debugging, and continuous feature improvement from user feedback.</p>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item" data-reveal>
                             <div class="timeline-meta">
                                 <span>Isfaf</span>
                                 <span>Mar 2024 - Sep 2024</span>
@@ -583,17 +441,17 @@
                             <p>Worked on the Gamiran fitness application with step and calorie tracking, running events, real-time data work, and performance-focused mobile UX.</p>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item" data-reveal>
                             <div class="timeline-meta">
                                 <span>Searchha</span>
                                 <span>Aug 2024</span>
                                 <span>B2B</span>
                             </div>
-                            <h3>Senior Flutter Developer</h3>
-                            <p>Supported a B2B product with scalable architecture, API integration, usability iteration, app analytics, and strong product-focused implementation.</p>
+                            <h3>Full-Stack Developer</h3>
+                            <p>Worked as a full-stack developer: Laravel backend, Flutter mobile app, Vite + Blade website frontend, and AI agents integration for product workflows.</p>
                         </article>
 
-                        <article class="timeline-item timeline-item--wide">
+                        <article class="timeline-item timeline-item--wide" data-reveal>
                             <div class="timeline-meta">
                                 <span>Besenior</span>
                                 <span>2019 - 2024</span>
@@ -608,7 +466,7 @@
                             </ul>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item" data-reveal>
                             <div class="timeline-meta">
                                 <span>T.Tab</span>
                                 <span>Aug 2022 - Jun 2023</span>
@@ -618,7 +476,7 @@
                             <p>Developed a transport application for moving-company staff with user-friendly Flutter UI, real-time tracking, operational efficiency improvements, and day-to-day debugging.</p>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item" data-reveal>
                             <div class="timeline-meta">
                                 <span>chitan peitan</span>
                                 <span>Sep 2022 - Dec 2022</span>
@@ -628,7 +486,7 @@
                             <p>Delivered Android, iOS, and web work with Flutter using Get It, Bloc and Cubit, Dio, and repository-oriented architecture patterns.</p>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item" data-reveal>
                             <div class="timeline-meta">
                                 <span>mobin khodro</span>
                                 <span>Apr 2022 - Jul 2022</span>
@@ -638,7 +496,7 @@
                             <p>Worked on the automation application for Mobin Khodro with Flutter and Git-based collaboration in an Iran-based freelance setup.</p>
                         </article>
 
-                        <article class="timeline-item">
+                        <article class="timeline-item" data-reveal>
                             <div class="timeline-meta">
                                 <span>Pte With Ash</span>
                                 <span>Jan 2020 - Jul 2021</span>
@@ -653,23 +511,23 @@
 
             <section id="focus">
                 <div class="section-inner">
-                    <div class="section-heading">
+                    <div class="section-heading" data-reveal>
                         <span class="micro-label">Focus</span>
                         <h2>What the work usually centers on.</h2>
                         <p>
                             The strongest fit is where frontend quality, product clarity, and dependable engineering all need to move together.
                         </p>
                     </div>
-                    <div class="focus-grid">
-                        <article class="card">
+                    <div class="focus-grid" data-reveal>
+                        <article class="card" data-reveal>
                             <h3>Product UI</h3>
                             <p>Responsive Flutter interfaces, interaction polish, and screen systems that stay readable and calm on web and mobile.</p>
                         </article>
-                        <article class="card">
+                        <article class="card" data-reveal>
                             <h3>Architecture</h3>
                             <p>Practical state boundaries, API integration, clean feature structure, and code that stays maintainable as the product grows.</p>
                         </article>
-                        <article class="card">
+                        <article class="card" data-reveal>
                             <h3>Delivery</h3>
                             <p>Healthcare, B2B, logistics, learning, and fitness products where quality, speed, and trust all matter at the same time.</p>
                         </article>
@@ -679,26 +537,25 @@
 
             <section id="contact">
                 <div class="section-inner">
-                    <div class="section-heading">
+                    <div class="section-heading" data-reveal>
                         <span class="micro-label">Contact</span>
                         <h2>Open for strong Flutter product work.</h2>
                         <p>
                             The best direct contact on this page is LinkedIn, with GitHub included as a second reference point for current work.
                         </p>
                     </div>
-                    <div class="grid-12">
+                    <div class="grid-12" data-reveal>
                         <div class="story-copy">
-                            <div class="card">
+                            <div class="card" data-reveal>
                                 <h3>Best fit</h3>
                                 <p>Healthcare products, senior Flutter roles, web and mobile UI implementation, API-heavy apps, and teams that want clean execution without unnecessary complexity.</p>
                             </div>
                         </div>
-                        <aside class="story-side">
-                            <div class="card">
+                        <aside class="story-side" data-reveal>
+                            <div class="card" data-reveal>
                                 <h3>Start conversation</h3>
                                 <div class="contact-actions">
                                     <a class="button button-primary" href="https://www.linkedin.com/in/mohammad-aghajani-435830206">LinkedIn</a>
-                                    <a class="button button-secondary" href="https://github.com/mhmdMediqo">GitHub</a>
                                 </div>
                             </div>
                         </aside>
@@ -708,7 +565,7 @@
         </main>
 
         <footer class="footer">
-            <div class="footer-inner">
+            <div class="footer-inner" data-reveal>
                 <span>Mohammad Aghajani</span>
                 <span>Flutter product engineering across web and mobile</span>
             </div>
@@ -717,75 +574,36 @@
 
     <script>
         (() => {
-            const hero = document.querySelector("[data-cinematic-hero]");
-            const video = document.querySelector("[data-cinematic-video]");
+            const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-            if (!hero || !video) {
+            if (!revealItems.length) {
                 return;
             }
 
-            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-            /** Usable timeline length (stay slightly shy of EOF for stability). */
-            const timelineEnd = (d) =>
-                Number.isFinite(d) && d > 0 ? Math.max(d - 0.04, 0) : 0;
-
-            let duration = 0;
-
-            /** Progress 0 = top of hero pin, 1 = scrolled through hero. Scroll up decreases (video rewinds). */
-            const readHeroProgress = () => {
-                const maxScroll = Math.max(hero.offsetHeight - window.innerHeight, 1);
-                const top = hero.getBoundingClientRect().top;
-                return clamp(-top / maxScroll, 0, 1);
-            };
-
-            const syncVideoWithScroll = () => {
-                const progress = readHeroProgress();
-                hero.style.setProperty("--hero-progress", progress.toFixed(4));
-
-                if (prefersReducedMotion || duration <= 0) {
-                    return;
-                }
-
-                const end = timelineEnd(duration);
-                const targetTime = progress * end;
-
-                if (Math.abs(video.currentTime - targetTime) > 1 / 72) {
-                    try {
-                        video.currentTime = targetTime;
-                    } catch {
-                        // Metadata or decoder not ready yet.
-                    }
-                }
-
-                if (!video.paused) {
-                    video.pause();
-                }
-            };
-
-            video.muted = true;
-            video.playsInline = true;
-            video.removeAttribute("loop");
-            video.removeAttribute("autoplay");
-
-            video.addEventListener("loadedmetadata", () => {
-                duration = video.duration || 0;
-
-                if (prefersReducedMotion && timelineEnd(duration) > 0) {
-                    try {
-                        video.currentTime = Math.min(duration * 0.12, timelineEnd(duration));
-                    } catch {
-                        //
-                    }
-                    return;
-                }
-
-                syncVideoWithScroll();
+            revealItems.forEach((item, index) => {
+                item.style.transitionDelay = `${Math.min(index * 20, 180)}ms`;
             });
 
-            syncVideoWithScroll();
-            window.addEventListener("scroll", syncVideoWithScroll, { passive: true });
-            window.addEventListener("resize", syncVideoWithScroll);
+            if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+                revealItems.forEach((item) => item.classList.add("is-visible"));
+                return;
+            }
+
+            const revealObserver = new IntersectionObserver(
+                (entries) => {
+                    for (const entry of entries) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                        } else if (entry.boundingClientRect.top > window.innerHeight * 0.9) {
+                            entry.target.classList.remove("is-visible");
+                        }
+                    }
+                },
+                { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
+            );
+
+            revealItems.forEach((item) => revealObserver.observe(item));
         })();
     </script>
 </body>
