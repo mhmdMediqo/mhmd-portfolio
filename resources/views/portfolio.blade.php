@@ -1,609 +1,429 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mohammad Aghajani | Flutter Product Engineer</title>
-    <meta
-        name="description"
-        content="Personal portfolio for Mohammad Aghajani, a Flutter engineer building healthcare, B2B, and consumer products across web and mobile."
-    >
+    <title>Mohammad Aghajani | Full-Stack & Flutter Engineer</title>
+    <meta name="description" content="Interactive 3D resume and portfolio for Mohammad Aghajani. Full-stack Laravel and Flutter engineering with production product delivery.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #06111a;
-            --bg-soft: #0c1826;
-            --panel: rgba(9, 18, 28, 0.74);
-            --panel-strong: rgba(11, 21, 34, 0.9);
-            --line: rgba(146, 196, 255, 0.16);
-            --text: #eef5ff;
-            --muted: #9cb0cb;
-            --accent: #72f4cc;
-            --accent-2: #69b8ff;
-            --accent-3: #ffaf78;
-            --max: 1180px;
-            --section-pad: clamp(3.25rem, 6vw, 5.5rem);
+            --bg: #04070d;
+            --bg-soft: #0a1420;
+            --panel: rgba(10, 16, 28, 0.66);
+            --panel-strong: rgba(12, 20, 34, 0.86);
+            --line: rgba(150, 203, 255, 0.24);
+            --text: #eef6ff;
+            --muted: #9fb4d1;
+            --accent: #7af0d5;
+            --accent-2: #6fb9ff;
+            --accent-3: #ffb887;
+            --max: 1240px;
+            --section-pad: clamp(3.5rem, 8vw, 7rem);
         }
-
         * { box-sizing: border-box; }
+        html, body { margin: 0; }
         html { scroll-behavior: smooth; }
         body {
-            margin: 0;
-            font-family: "Space Grotesk", sans-serif;
+            font-family: "Manrope", sans-serif;
             color: var(--text);
-            background:
-                radial-gradient(circle at 18% 18%, rgba(105, 184, 255, 0.18), transparent 28%),
-                radial-gradient(circle at 84% 12%, rgba(114, 244, 204, 0.14), transparent 24%),
-                radial-gradient(circle at 70% 68%, rgba(255, 175, 120, 0.10), transparent 22%),
-                linear-gradient(180deg, #040a10 0%, #08131d 42%, #03070c 100%);
-            overflow-x: hidden;
-            cursor: default;
+            background: radial-gradient(circle at 8% 18%, rgba(111, 185, 255, 0.2), transparent 30%), radial-gradient(circle at 84% 10%, rgba(122, 240, 213, 0.15), transparent 28%), linear-gradient(180deg, #020307 0%, #07101a 45%, #04060b 100%);
+            overflow-x: clip;
         }
-
         body::before {
             content: "";
             position: fixed;
             inset: 0;
             pointer-events: none;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
-            background-size: 72px 72px;
-            mask-image: radial-gradient(circle at center, black 26%, transparent 82%);
-            opacity: 0.55;
+            z-index: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 70px 70px;
+            mask-image: radial-gradient(circle at center, black 24%, transparent 82%);
         }
-
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background:
-                radial-gradient(circle at 22% 32%, rgba(114, 244, 204, 0.10), transparent 22%),
-                radial-gradient(circle at 78% 24%, rgba(105, 184, 255, 0.12), transparent 24%),
-                radial-gradient(circle at 52% 82%, rgba(255, 175, 120, 0.08), transparent 20%);
-            filter: blur(22px);
-            opacity: 0.9;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-            cursor: pointer;
-        }
+        a { color: inherit; text-decoration: none; }
         .shell { position: relative; z-index: 1; }
-
-        [data-reveal] {
-            opacity: 0;
-            transform: translate3d(0, 30px, 0) scale(0.992);
-            transition: opacity 620ms cubic-bezier(0.22, 1, 0.36, 1), transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
-            will-change: opacity, transform;
+        .section-inner { width: min(calc(100% - 2rem), var(--max)); margin: 0 auto; }
+        section { padding: var(--section-pad) 0; content-visibility: auto; contain-intrinsic-size: 1px 950px; }
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            align-items: center;
+            padding: clamp(4rem, 8vh, 6rem) 0;
         }
-
-        [data-reveal].is-visible {
-            opacity: 1;
-            transform: translate3d(0, 0, 0) scale(1);
-        }
-        .section-inner,
-        .footer-inner {
-            width: min(calc(100% - 2rem), var(--max));
-            margin: 0 auto;
-        }
-
-        section {
-            padding: var(--section-pad) 0;
-            content-visibility: auto;
-            contain-intrinsic-size: 1px 920px;
-        }
-
-        .identity {
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.2rem, 3vw, 2.4rem); align-items: center; }
+        .kicker {
             display: inline-flex;
             align-items: center;
-            gap: 0.85rem;
-            font-family: "Sora", sans-serif;
-            font-weight: 700;
-            font-size: 0.98rem;
-        }
-
-        .brand-mark {
-            width: 46px;
-            height: 46px;
-            border-radius: 15px;
-            display: grid;
-            place-items: center;
-            color: #031019;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 56%, #d5ebff 100%);
-            box-shadow: 0 0 40px rgba(105, 184, 255, 0.22);
-        }
-
-        .eyebrow,
-        .micro-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            color: var(--accent);
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-        }
-
-        .eyebrow::before,
-        .micro-label::before {
-            content: "";
-            width: 2rem;
-            height: 1px;
-            background: linear-gradient(90deg, var(--accent), transparent);
-        }
-
-        .button {
-            min-height: 50px;
-            padding: 0 1.2rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            font-weight: 700;
-            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-        }
-
-        .button:hover,
-        .button:focus-visible { transform: translateY(-2px); }
-
-        .button-primary {
-            background: linear-gradient(135deg, var(--accent), #a6e6ff);
-            color: #04131a;
-            box-shadow: 0 16px 42px rgba(114, 244, 204, 0.16);
-        }
-
-        .button-secondary {
-            border-color: rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.03);
-        }
-
-        .story-copy p,
-        .card p,
-        .timeline-item p,
-        .list li {
-            margin: 0;
-            color: var(--muted);
-            line-height: 1.72;
-        }
-
-        .section-heading {
-            display: grid;
-            gap: 0.85rem;
-            margin-bottom: 2rem;
-        }
-
-        .section-heading h2 {
-            margin: 0;
-            font-family: "Sora", sans-serif;
-            font-size: clamp(1.85rem, 3.6vw, 3rem);
-            line-height: 1.03;
-            max-width: 13ch;
-        }
-
-        .intro-name {
-            display: block;
-            margin-bottom: 0.85rem;
-            font-size: clamp(2.2rem, 5.4vw, 4.2rem);
-            line-height: 0.92;
-            letter-spacing: -0.02em;
-            white-space: nowrap;
-            background: linear-gradient(135deg, #7cf7d1 0%, #79c6ff 48%, #ffb57b 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        #about .section-heading h2 {
-            max-width: none;
-        }
-
-        .section-heading p {
-            margin: 0;
-            max-width: 44rem;
-            color: var(--muted);
-            line-height: 1.76;
-        }
-
-        .grid-12 {
-            display: grid;
-            grid-template-columns: repeat(12, minmax(0, 1fr));
-            gap: 1rem;
-        }
-
-        .story-copy { grid-column: span 7; display: grid; gap: 1rem; }
-        .story-side { grid-column: span 5; display: grid; gap: 1rem; }
-
-        .card,
-        .timeline-item {
-            transform: translateZ(0);
-            transition: transform 280ms ease, border-color 280ms ease, background 280ms ease;
-            border: 1px solid var(--line);
-            border-radius: 22px;
-            background: linear-gradient(180deg, rgba(10, 19, 30, 0.72), rgba(6, 12, 20, 0.42));
-            backdrop-filter: blur(16px);
-        }
-
-        .card { padding: 1.15rem; }
-
-        .card:hover,
-        .timeline-item:hover {
-            transform: translate3d(0, -5px, 0);
-            border-color: rgba(114, 244, 204, 0.28);
-            background: linear-gradient(180deg, rgba(13, 24, 38, 0.76), rgba(8, 15, 25, 0.48));
-        }
-
-        .card h3,
-        .timeline-item h3 {
-            margin: 0 0 0.65rem;
-            font-family: "Sora", sans-serif;
-            font-size: 1.06rem;
-        }
-
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
             gap: 0.65rem;
-            padding: 0;
-            margin: 0;
-            list-style: none;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.74rem;
+            color: var(--accent);
         }
-
-        .chips li {
+        .kicker::before { content: ""; width: 2rem; height: 1px; background: linear-gradient(90deg, var(--accent), transparent); }
+        h1, h2, h3 { font-family: "Outfit", sans-serif; }
+        h1 {
+            margin: 0.9rem 0;
+            font-size: clamp(2.15rem, 5.6vw, 4.9rem);
+            line-height: 0.98;
+            letter-spacing: -0.03em;
+        }
+        .name-gradient { background: linear-gradient(120deg, #8df7dc 0%, #83ccff 45%, #ffc28f 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero p { margin: 0; color: var(--muted); line-height: 1.75; max-width: 62ch; }
+        .cta-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.4rem; }
+        .button {
+            min-height: 48px;
+            padding: 0 1.2rem;
+            border-radius: 999px;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            padding: 0.65rem 0.9rem;
-            border-radius: 999px;
-            border: 1px solid var(--line);
-            background: rgba(255,255,255,0.03);
-            color: #deebff;
-            font-size: 0.89rem;
+            font-weight: 700;
+            transition: transform 220ms ease, background 220ms ease, border-color 220ms ease;
+            border: 1px solid transparent;
         }
+        .button:hover, .button:focus-visible { transform: translateY(-2px); }
+        .button-primary { background: linear-gradient(130deg, var(--accent), var(--accent-2)); color: #031019; box-shadow: 0 12px 32px rgba(122, 240, 213, 0.22); }
+        .button-ghost { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.14); }
+
+        .scene {
+            perspective: 1200px;
+            transform-style: preserve-3d;
+            position: relative;
+            min-height: 520px;
+        }
+        .floating-grid {
+            position: relative;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+        .float-card {
+            position: absolute;
+            width: clamp(180px, 24vw, 320px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            background: var(--panel);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 22px 65px rgba(0,0,0,0.34);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        .float-card img, .float-card video { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .float-card .label {
+            position: absolute;
+            left: 0.8rem;
+            bottom: 0.8rem;
+            padding: 0.32rem 0.65rem;
+            border-radius: 999px;
+            background: rgba(3, 7, 13, 0.66);
+            border: 1px solid rgba(255,255,255,0.18);
+            font-size: 0.76rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .float-1 { height: 210px; left: 0%; top: 7%; transform: translateZ(80px) rotateY(-12deg) rotateX(6deg); }
+        .float-2 { height: 250px; right: 4%; top: 18%; transform: translateZ(120px) rotateY(10deg) rotateX(-4deg); }
+        .float-3 { height: 220px; left: 18%; bottom: 3%; transform: translateZ(42px) rotateY(8deg); }
+        .float-4 { height: 260px; right: 18%; bottom: -3%; transform: translateZ(140px) rotateY(-7deg); }
+
+        .glass-card {
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: linear-gradient(180deg, rgba(11, 18, 30, 0.88), rgba(7, 12, 22, 0.54));
+            backdrop-filter: blur(18px);
+        }
+
+        .section-head { margin-bottom: 1.8rem; }
+        .section-head h2 { margin: 0.85rem 0 0; font-size: clamp(1.75rem, 3.8vw, 3.1rem); line-height: 1.05; }
+        .section-head p { margin: 0.7rem 0 0; color: var(--muted); max-width: 68ch; line-height: 1.7; }
 
         .experience-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1rem;
+            perspective: 900px;
         }
-
-        .timeline-item {
-            padding: 1.15rem 1.2rem;
-            display: grid;
-            gap: 0.8rem;
+        .exp-card {
+            padding: 1.15rem;
+            transform-style: preserve-3d;
+            transition: transform 300ms ease, border-color 300ms ease;
         }
-
-        .timeline-item--wide {
-            grid-column: span 2;
-        }
-
-        .timeline-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.65rem;
-            color: #ddecff;
-            font-size: 0.9rem;
-        }
-
-        .timeline-meta span {
-            padding: 0.38rem 0.68rem;
-            border-radius: 999px;
+        .exp-card:hover { border-color: rgba(122, 240, 213, 0.45); }
+        .exp-meta { display: flex; flex-wrap: wrap; gap: 0.52rem; margin-bottom: 0.72rem; }
+        .exp-meta span {
+            font-size: 0.8rem;
+            color: #d8e9ff;
+            border: 1px solid rgba(255,255,255,0.13);
             background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 999px;
+            padding: 0.35rem 0.62rem;
+        }
+        .exp-card h3 { margin: 0 0 0.55rem; font-size: 1.08rem; }
+        .exp-card p { margin: 0; color: var(--muted); line-height: 1.67; }
+        .chips { margin-top: 0.78rem; display: flex; flex-wrap: wrap; gap: 0.52rem; }
+        .chips span {
+            font-size: 0.78rem;
+            padding: 0.33rem 0.58rem;
+            border-radius: 999px;
+            border: 1px solid rgba(122, 240, 213, 0.28);
+            color: #d8fff5;
+            background: rgba(122, 240, 213, 0.1);
         }
 
-        .list {
-            display: grid;
-            gap: 0.8rem;
-            padding: 0;
-            margin: 0;
-            list-style: none;
+        .showcase-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 1rem; }
+        .media-card {
+            border-radius: 22px;
+            overflow: hidden;
+            position: relative;
+            min-height: 220px;
+            border: 1px solid var(--line);
+            background: var(--panel-strong);
+            transform-style: preserve-3d;
+            transition: transform 280ms ease, border-color 280ms ease;
         }
-
-        .list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+        .media-card:hover { transform: translateY(-4px) translateZ(14px); border-color: rgba(122, 240, 213, 0.52); }
+        .media-card img, .media-card video { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .media-copy {
+            position: absolute;
+            left: 0.9rem;
+            right: 0.9rem;
+            bottom: 0.8rem;
+            padding: 0.72rem;
+            border-radius: 12px;
+            background: rgba(5, 10, 18, 0.72);
+            border: 1px solid rgba(255,255,255,0.14);
         }
+        .media-copy h3 { margin: 0; font-size: 1rem; }
+        .media-copy p { margin: 0.4rem 0 0; font-size: 0.9rem; color: #bdd0e6; }
+        .featured { grid-row: span 2; min-height: 460px; }
 
-        .list li:last-child { border-bottom: 0; }
+        .contact-panel { padding: 1.2rem; display: grid; gap: 0.8rem; }
+        .contact-panel p { margin: 0; color: var(--muted); }
 
-        .focus-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1rem;
+        .footer { padding: 1.2rem 0 2rem; }
+        .footer .section-inner { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; color: var(--muted); display: flex; justify-content: space-between; gap: 0.8rem; font-size: 0.9rem; }
+
+        [data-reveal] {
+            opacity: 0;
+            transform: translate3d(0, 28px, 0) scale(0.99);
+            transition: opacity 620ms cubic-bezier(0.22, 1, 0.36, 1), transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
         }
+        [data-reveal].is-visible { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+        [data-tilt] { will-change: transform; }
 
-        .contact-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.85rem;
-            margin-top: 0.4rem;
+        @media (max-width: 1024px) {
+            .hero-grid, .showcase-grid, .experience-grid { grid-template-columns: 1fr; }
+            .scene { min-height: 430px; }
+            .featured { min-height: 320px; grid-row: span 1; }
         }
-
-        .footer {
-            padding: 1.25rem 0 2.25rem;
-            color: var(--muted);
+        @media (max-width: 680px) {
+            .float-card { width: clamp(150px, 40vw, 220px); }
+            .float-2 { right: 0; }
+            .float-4 { right: 8%; }
+            h1 { font-size: clamp(1.85rem, 10vw, 2.8rem); }
+            .footer .section-inner { flex-direction: column; }
         }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 1.15rem;
-            font-size: 0.92rem;
-        }
-
         @media (prefers-reduced-motion: reduce) {
-        }
-
-        @media (max-width: 980px) {
-            .grid-12,
-            .focus-grid,
-            .experience-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .story-copy,
-            .story-side,
-            .timeline-item--wide {
-                grid-column: span 1;
-            }
-
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+            [data-reveal] { opacity: 1 !important; transform: none !important; }
         }
     </style>
 </head>
 <body>
     <div class="shell">
-        <main id="home">
-            <section id="about">
-                <div class="section-inner">
-                    <div class="section-heading" data-reveal>
-                        <span class="micro-label">Introduction</span>
-                        <h2><span class="intro-name">Mohammad Aghajani</span>Flutter engineer focused on AI agents, prompt engineering, and product automation.</h2>
-                        <p>
-                            I build practical AI-powered products with reliable architecture, clean UI delivery, and structured prompt systems that stay maintainable as scope grows.
-                        </p>
-                    </div>
-                    <div class="grid-12" data-reveal>
-                        <div class="story-copy">
-                            <p>
-                                I work on AI-agent workflows end to end: prompt design, guardrails, orchestration patterns, tool integration, and production-ready interfaces across web and mobile.
-                            </p>
-                            <p>
-                                The core approach is simple: clear prompts, measurable behavior, and systems that deliver useful automation without losing product quality.
-                            </p>
-                            <ul class="chips" aria-label="Core strengths">
-                                <li>AI agents workflows</li>
-                                <li>Prompt engineering</li>
-                                <li>Tool calling and orchestration</li>
-                                <li>Flutter web and mobile</li>
-                                <li>Laravel APIs integration</li>
-                                <li>Performance optimization</li>
-                            </ul>
+        <main>
+            <section class="hero">
+                <div class="section-inner hero-grid">
+                    <div data-reveal>
+                        <span class="kicker">Resume / Portfolio</span>
+                        <h1><span class="name-gradient">Mohammad Aghajani</span><br>Senior Full-Stack & Flutter Engineer</h1>
+                        <p>I design and ship high-performance products across Laravel, Blade, Vite, and Flutter ecosystems, balancing architecture quality, rich UI motion, and maintainable delivery.</p>
+                        <div class="cta-row">
+                            <a class="button button-primary" href="https://www.linkedin.com/in/mohammad-aghajani-435830206" target="_blank" rel="noopener">LinkedIn</a>
+                            <a class="button button-ghost" href="https://github.com/mhmdmediqo" target="_blank" rel="noopener">GitHub</a>
+                            <a class="button button-ghost" href="#media-showcase">View Projects</a>
                         </div>
-                        <aside class="story-side" data-reveal>
-                            <div class="card" data-reveal>
-                                <h3>Current direction</h3>
-                                <p>Building AI-agent features with robust prompting, evaluation loops, and production-grade product implementation.</p>
-                            </div>
-                            <div class="card" data-reveal>
-                                <h3>Working style</h3>
-                                <p>Prompt-first thinking, clear system boundaries, fast iteration, and shipping agent experiences that stay predictable.</p>
-                            </div>
-                        </aside>
+                    </div>
+                    <div class="scene" data-reveal data-parallax>
+                        <div class="floating-grid">
+                            <article class="float-card float-1" data-tilt>
+                                <picture>
+                                    <img src="/media/placeholders/profile-shot.svg" alt="Profile visual placeholder" width="900" height="1100" fetchpriority="high" decoding="async">
+                                </picture>
+                                <span class="label">Profile</span>
+                            </article>
+                            <article class="float-card float-2" data-tilt>
+                                <video src="/video/hero-cinematic.mp4" muted loop playsinline preload="metadata" poster="/media/placeholders/searchha-feature.svg"></video>
+                                <span class="label">Cinematic Reel</span>
+                            </article>
+                            <article class="float-card float-3" data-tilt>
+                                <picture><img src="/media/placeholders/project-grid-01.svg" alt="Project screenshot placeholder" width="1400" height="900" loading="lazy" decoding="async"></picture>
+                                <span class="label">Work Visual</span>
+                            </article>
+                            <article class="float-card float-4" data-tilt>
+                                <picture><img src="/media/placeholders/project-grid-02.svg" alt="Media preview placeholder" width="1400" height="900" loading="lazy" decoding="async"></picture>
+                                <span class="label">Showcase</span>
+                            </article>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section id="experience">
                 <div class="section-inner">
-                    <div class="section-heading" data-reveal>
-                        <span class="micro-label">Resume</span>
-                        <h2>Recent roles and the product contexts behind them.</h2>
-                        <p>
-                            A tighter snapshot of the work across healthcare, consumer, learning, fitness, logistics, and B2B products.
-                        </p>
+                    <div class="section-head" data-reveal>
+                        <span class="kicker">Experience</span>
+                        <h2>Production roles from newest to oldest.</h2>
+                        <p>Searchha is positioned as the latest full-stack delivery, followed by engineering, leadership, and instructor roles across healthcare, B2B, logistics, consumer, and education products.</p>
                     </div>
-                    <div class="experience-grid" data-reveal>
-                        <article class="timeline-item" data-reveal>
-                            <div class="timeline-meta">
-                                <span>TECHTiQ</span>
-                                <span>Dec 2024 - Present</span>
-                                <span>Healthcare</span>
-                            </div>
-                            <h3>Flutter Team Lead</h3>
-                            <p>Designing and building a healthcare web application with scalable architecture, code review, strong performance, real-time communication, and secure data handling.</p>
-                        </article>
+                    <div class="experience-grid">
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>Searchha</span><span>3 months</span><span>Full-Stack</span><span>searchha.com</span></div><h3>Senior Full-Stack Developer / Full-Stack Developer</h3><p>Designed and developed the complete Searchha platform over 3 months with Laravel backend and Blade + Vite frontend, focused on architecture quality, responsive UI, performance, and maintainability.</p><div class="chips"><span>Laravel</span><span>Blade</span><span>Vite</span><span>Full-Stack Development</span></div></article>
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>TECHTIQ</span><span>Full-time</span><span>Dec 2024 - Present</span><span>Dubai, UAE · Remote</span></div><h3>Flutter Team Lead</h3><p>Led healthcare web application design and development with scalable architecture, mentoring, code reviews, reliability, and cross-functional collaboration with product, UI/UX, and QA teams.</p><div class="chips"><span>Flutter</span><span>Jira</span></div></article>
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>Jhogd</span><span>Freelance</span><span>Jun 2024 - Oct 2024</span><span>Netherlands · Remote</span></div><h3>Senior Flutter Developer</h3><p>Built a quiz application for Iranian users, focused on UX, API integration, testing, debugging, feedback analysis, and performance optimization.</p><div class="chips"><span>Flutter</span><span>Git</span></div></article>
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>Searchha</span><span>Freelance</span><span>Aug 2024</span><span>Tehran, Iran · Remote</span></div><h3>Senior Flutter Developer</h3><p>Designed and developed the Searchha B2B app for business connectivity with scalable architecture, API integration, usability testing, and performance monitoring.</p><div class="chips"><span>Flutter</span><span>API Integration</span><span>Performance Monitoring</span></div></article>
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>Gamiran / Isfaf</span><span>Freelance</span><span>Mar 2024 - Sep 2024</span><span>Tehran Province, Iran · Remote</span></div><h3>Senior Flutter Developer</h3><p>Developed a fitness tracking application focused on strong user experience, reliable performance, and health-oriented tracking features.</p><div class="chips"><span>Flutter</span></div></article>
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>Besenior</span><span>Full-time</span><span>Feb 2024 - Sep 2024</span><span>Iran · Remote</span></div><h3>Team Lead - Mobile Application Development</h3><p>Led Android and iOS development for LeagueTournament, emphasizing clean architecture, team coordination, and cross-platform delivery.</p><div class="chips"><span>Flutter</span><span>GitFlow</span></div></article>
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>Besenior</span><span>Full-time</span><span>Feb 2021 - Sep 2024</span></div><h3>Flutter Development Instructor</h3><p>Taught Flutter and mobile engineering concepts, mentoring students on architecture, state management, and practical product implementation.</p><div class="chips"><span>Flutter</span><span>Dart</span><span>Get It</span></div></article>
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>Self-employed</span><span>Jan 2019 - Feb 2023</span><span>Babol, Mazandaran, Iran</span></div><h3>Android Development Instructor</h3><p>Taught native Android development, architecture principles, Android Jetpack, and LiveData-driven app design.</p><div class="chips"><span>Android</span><span>Android Jetpack</span><span>LiveData</span></div></article>
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>Besenior</span><span>Full-time</span><span>Jun 2022 - Aug 2022</span><span>Tehran Province, Iran</span></div><h3>Flutter Developer</h3><p>Developed LeagueBS, a Flutter app for League of Legends learning with clean UI, architecture consistency, and strong UX.</p><div class="chips"><span>Flutter</span><span>Dart</span><span>Get It</span></div></article>
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>T Ah</span><span>Freelance</span><span>Aug 2022 - Jun 2023</span><span>Tehran Province, Iran · Remote</span></div><h3>Flutter Developer</h3><p>Built a transportation app to improve logistics workflows, team communication, route planning, and real-time tracking.</p><div class="chips"><span>Flutter</span><span>Clean Architecture</span></div></article>
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>Chitan Peitan</span><span>Contract</span><span>Sep 2022 - Dec 2022</span><span>Tehran Province, Iran · Remote</span></div><h3>Flutter Developer</h3><p>Delivered Android, iOS, and Web features with Get It, Bloc/Cubit, Dio, and Repository Pattern for maintainable cross-platform systems.</p><div class="chips"><span>Flutter</span><span>Git</span><span>Get It</span><span>Bloc/Cubit</span><span>Dio</span><span>Repository Pattern</span></div></article>
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>Mobin Khodro</span><span>Freelance</span><span>Apr 2022 - Jul 2022</span><span>Tehran Province, Iran</span></div><h3>Flutter Developer</h3><p>Built an automation application for internal workflows with a clean user experience and structured implementation approach.</p><div class="chips"><span>Flutter</span><span>Git</span></div></article>
+                        <article class="glass-card exp-card" data-reveal data-tilt><div class="exp-meta"><span>Pte With Ash</span><span>Freelance</span><span>Jan 2020 - Jul 2021</span><span>Istanbul, Turkiye</span></div><h3>Android Developer</h3><p>Developed an English-learning Android app centered on lesson structure, interaction quality, and learning-focused user flows.</p><div class="chips"><span>Android</span><span>RxAndroid</span></div></article>
+                    </div>
+                </div>
+            </section>
 
-                        <article class="timeline-item" data-reveal>
-                            <div class="timeline-meta">
-                                <span>Joghd</span>
-                                <span>Jun 2024 - Oct 2024</span>
-                                <span>Quiz App</span>
+            <section id="media-showcase">
+                <div class="section-inner">
+                    <div class="section-head" data-reveal>
+                        <span class="kicker">Projects / Media</span>
+                        <h2>3D showcase with photos and video previews.</h2>
+                        <p>The cards below are media-first and optimized for performance with lazy images, metadata-preloaded video, and transform-only interaction animation.</p>
+                    </div>
+                    <div class="showcase-grid" data-reveal>
+                        <article class="media-card featured" data-tilt>
+                            <picture>
+                                <img src="/media/placeholders/searchha-feature.svg" alt="Searchha featured project preview" width="1600" height="1000" decoding="async">
+                            </picture>
+                            <div class="media-copy">
+                                <h3>Searchha - Featured Newest Project</h3>
+                                <p>Full-Stack Developer | Laravel, Blade, Vite | 3 months | searchha.com</p>
                             </div>
-                            <h3>Senior Flutter Developer</h3>
-                            <p>Built an interactive quiz product for Iranian users with cross-platform UI work, backend integration, testing, debugging, and continuous feature improvement from user feedback.</p>
                         </article>
-
-                        <article class="timeline-item" data-reveal>
-                            <div class="timeline-meta">
-                                <span>Isfaf</span>
-                                <span>Mar 2024 - Sep 2024</span>
-                                <span>Fitness Tracking</span>
-                            </div>
-                            <h3>Senior Flutter Developer</h3>
-                            <p>Worked on the Gamiran fitness application with step and calorie tracking, running events, real-time data work, and performance-focused mobile UX.</p>
+                        <article class="media-card" data-tilt>
+                            <video src="/video/hero-cinematic.mp4" muted loop playsinline preload="none" loading="lazy" poster="/media/placeholders/project-grid-01.svg"></video>
+                            <div class="media-copy"><h3>Cinematic Product Reel</h3><p>Muted loop preview with offscreen pause logic.</p></div>
                         </article>
-
-                        <article class="timeline-item" data-reveal>
-                            <div class="timeline-meta">
-                                <span>Searchha</span>
-                                <span>Aug 2024</span>
-                                <span>B2B</span>
-                            </div>
-                            <h3>Full-Stack Developer</h3>
-                            <p>Worked as a full-stack developer: Laravel backend, Flutter mobile app, Vite + Blade website frontend, and AI agents integration for product workflows.</p>
+                        <article class="media-card" data-tilt>
+                            <picture><img src="/media/placeholders/project-grid-01.svg" alt="Project gallery placeholder one" width="1400" height="900" loading="lazy" decoding="async"></picture>
+                            <div class="media-copy"><h3>Web/App Screenshot Slot</h3><p>Replace with real capture from shipped products.</p></div>
                         </article>
-
-                        <article class="timeline-item timeline-item--wide" data-reveal>
-                            <div class="timeline-meta">
-                                <span>Besenior</span>
-                                <span>2019 - 2024</span>
-                                <span>Apps + Education</span>
-                            </div>
-                            <h3>Mobile product and training work across several roles</h3>
-                            <ul class="list">
-                                <li>Team Lead - Mobile Application Development, Feb 2024 - Sep 2024: worked on the LeagueTournament app for Android and iOS with real-time tournament management, game guides, news, and video content.</li>
-                                <li>Flutter development instructor, Feb 2021 - Sep 2024: taught project-based Flutter topics including architecture, packages, and Bloc-oriented workflows.</li>
-                                <li>Android development instructor, Jan 2019 - Feb 2023: taught Android Jetpack, LiveData, Kotlin, Room, Hilt, and advanced Android development concepts.</li>
-                                <li>Flutter developer, Jun 2022 - Aug 2022: built LeagueBs, an app for learning League of Legends concepts and content.</li>
-                            </ul>
+                        <article class="media-card" data-tilt>
+                            <picture><img src="/media/placeholders/project-grid-02.svg" alt="Project gallery placeholder two" width="1400" height="900" loading="lazy" decoding="async"></picture>
+                            <div class="media-copy"><h3>UX Flow Slot</h3><p>Optimized placeholder with fixed ratio and no layout shift.</p></div>
                         </article>
-
-                        <article class="timeline-item" data-reveal>
-                            <div class="timeline-meta">
-                                <span>T.Tab</span>
-                                <span>Aug 2022 - Jun 2023</span>
-                                <span>Logistics</span>
-                            </div>
-                            <h3>Flutter Developer</h3>
-                            <p>Developed a transport application for moving-company staff with user-friendly Flutter UI, real-time tracking, operational efficiency improvements, and day-to-day debugging.</p>
-                        </article>
-
-                        <article class="timeline-item" data-reveal>
-                            <div class="timeline-meta">
-                                <span>chitan peitan</span>
-                                <span>Sep 2022 - Dec 2022</span>
-                                <span>Contract</span>
-                            </div>
-                            <h3>Flutter Developer</h3>
-                            <p>Delivered Android, iOS, and web work with Flutter using Get It, Bloc and Cubit, Dio, and repository-oriented architecture patterns.</p>
-                        </article>
-
-                        <article class="timeline-item" data-reveal>
-                            <div class="timeline-meta">
-                                <span>mobin khodro</span>
-                                <span>Apr 2022 - Jul 2022</span>
-                                <span>Automation</span>
-                            </div>
-                            <h3>Flutter Developer</h3>
-                            <p>Worked on the automation application for Mobin Khodro with Flutter and Git-based collaboration in an Iran-based freelance setup.</p>
-                        </article>
-
-                        <article class="timeline-item" data-reveal>
-                            <div class="timeline-meta">
-                                <span>Pte With Ash</span>
-                                <span>Jan 2020 - Jul 2021</span>
-                                <span>Android</span>
-                            </div>
-                            <h3>Android Developer</h3>
-                            <p>Built an English language learning application with Android and RxAndroid, focusing on lesson presentation, interaction flows, and smooth app behavior.</p>
+                        <article class="media-card" data-tilt>
+                            <picture><img src="/media/placeholders/profile-shot.svg" alt="Professional portrait placeholder" width="900" height="1100" loading="lazy" decoding="async"></picture>
+                            <div class="media-copy"><h3>Profile Media Slot</h3><p>Use this slot for a professional headshot.</p></div>
                         </article>
                     </div>
                 </div>
             </section>
 
-            <section id="focus">
+            <section>
                 <div class="section-inner">
-                    <div class="section-heading" data-reveal>
-                        <span class="micro-label">Focus</span>
-                        <h2>What the work usually centers on.</h2>
-                        <p>
-                            The strongest fit is where frontend quality, product clarity, and dependable engineering all need to move together.
-                        </p>
-                    </div>
-                    <div class="focus-grid" data-reveal>
-                        <article class="card" data-reveal>
-                            <h3>Product UI</h3>
-                            <p>Responsive Flutter interfaces, interaction polish, and screen systems that stay readable and calm on web and mobile.</p>
-                        </article>
-                        <article class="card" data-reveal>
-                            <h3>Architecture</h3>
-                            <p>Practical state boundaries, API integration, clean feature structure, and code that stays maintainable as the product grows.</p>
-                        </article>
-                        <article class="card" data-reveal>
-                            <h3>Delivery</h3>
-                            <p>Healthcare, B2B, logistics, learning, and fitness products where quality, speed, and trust all matter at the same time.</p>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact">
-                <div class="section-inner">
-                    <div class="section-heading" data-reveal>
-                        <span class="micro-label">Contact</span>
-                        <h2>Open for strong Flutter product work.</h2>
-                        <p>
-                            The best direct contact on this page is LinkedIn, with GitHub included as a second reference point for current work.
-                        </p>
-                    </div>
-                    <div class="grid-12" data-reveal>
-                        <div class="story-copy">
-                            <div class="card" data-reveal>
-                                <h3>Best fit</h3>
-                                <p>Healthcare products, senior Flutter roles, web and mobile UI implementation, API-heavy apps, and teams that want clean execution without unnecessary complexity.</p>
-                            </div>
+                    <div class="glass-card contact-panel" data-reveal>
+                        <span class="kicker">Contact</span>
+                        <h2 style="margin:0; font-size:clamp(1.55rem,3.2vw,2.3rem);">Available for full-stack and Flutter product delivery.</h2>
+                        <p>Focused on architecture quality, interactive UI systems, and reliable release execution for production teams.</p>
+                        <div class="cta-row">
+                            <a class="button button-primary" href="https://www.linkedin.com/in/mohammad-aghajani-435830206" target="_blank" rel="noopener">Connect on LinkedIn</a>
+                            <a class="button button-ghost" href="https://github.com/mhmdmediqo" target="_blank" rel="noopener">Review GitHub</a>
                         </div>
-                        <aside class="story-side" data-reveal>
-                            <div class="card" data-reveal>
-                                <h3>Start conversation</h3>
-                                <div class="contact-actions">
-                                    <a class="button button-primary" href="https://www.linkedin.com/in/mohammad-aghajani-435830206">LinkedIn</a>
-                                </div>
-                            </div>
-                        </aside>
                     </div>
                 </div>
             </section>
         </main>
 
         <footer class="footer">
-            <div class="footer-inner" data-reveal>
+            <div class="section-inner">
                 <span>Mohammad Aghajani</span>
-                <span>Flutter product engineering across web and mobile</span>
+                <span>Fullscreen 3D resume portfolio</span>
             </div>
         </footer>
     </div>
 
     <script>
         (() => {
-            const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
             const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
+            const tiltItems = Array.from(document.querySelectorAll("[data-tilt]"));
+            const parallaxContainers = Array.from(document.querySelectorAll("[data-parallax]"));
+            const videos = Array.from(document.querySelectorAll("video"));
 
-            if (!revealItems.length) {
-                return;
-            }
-
-            revealItems.forEach((item, index) => {
-                item.style.transitionDelay = `${Math.min(index * 20, 180)}ms`;
+            revealItems.forEach((item, i) => {
+                item.style.transitionDelay = `${Math.min(i * 28, 220)}ms`;
             });
 
-            if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-                revealItems.forEach((item) => item.classList.add("is-visible"));
-                return;
-            }
-
-            const revealObserver = new IntersectionObserver(
-                (entries) => {
-                    for (const entry of entries) {
+            if (!prefersReducedMotion && "IntersectionObserver" in window) {
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add("is-visible");
-                        } else if (entry.boundingClientRect.top > window.innerHeight * 0.9) {
-                            entry.target.classList.remove("is-visible");
                         }
-                    }
-                },
-                { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
-            );
+                    });
+                }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+                revealItems.forEach((item) => revealObserver.observe(item));
+            } else {
+                revealItems.forEach((item) => item.classList.add("is-visible"));
+            }
 
-            revealItems.forEach((item) => revealObserver.observe(item));
+            if (!prefersReducedMotion) {
+                const applyTilt = (el, x, y, depth = 10) => {
+                    const rect = el.getBoundingClientRect();
+                    const px = ((x - rect.left) / rect.width) * 2 - 1;
+                    const py = ((y - rect.top) / rect.height) * 2 - 1;
+                    const rx = (-py * 8).toFixed(2);
+                    const ry = (px * 10).toFixed(2);
+                    el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(${depth}px)`;
+                };
+
+                tiltItems.forEach((item) => {
+                    item.addEventListener("pointermove", (event) => {
+                        window.requestAnimationFrame(() => applyTilt(item, event.clientX, event.clientY));
+                    });
+                    item.addEventListener("pointerleave", () => {
+                        item.style.transform = "";
+                    });
+                });
+
+                const onScrollDepth = () => {
+                    const offset = window.scrollY * 0.06;
+                    parallaxContainers.forEach((wrap) => {
+                        wrap.style.transform = `translate3d(0, ${Math.max(-22, -offset)}px, 0)`;
+                    });
+                };
+                window.addEventListener("scroll", () => window.requestAnimationFrame(onScrollDepth), { passive: true });
+                onScrollDepth();
+            }
+
+            if ("IntersectionObserver" in window) {
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        const video = entry.target;
+                        if (entry.isIntersecting) {
+                            video.play().catch(() => {});
+                        } else {
+                            video.pause();
+                        }
+                    });
+                }, { threshold: 0.2 });
+                videos.forEach((video) => videoObserver.observe(video));
+            }
         })();
     </script>
 </body>

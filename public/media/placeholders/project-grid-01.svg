@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-label="Project media placeholder one">
+  <rect width="1400" height="900" fill="#0a1a2a"/>
+  <rect x="90" y="90" width="1220" height="720" rx="42" fill="#15324a" stroke="#70c6ff66"/>
+  <text x="170" y="430" fill="#e6f4ff" font-family="Arial, sans-serif" font-size="58" font-weight="700">Project Screenshot Slot</text>
+  <text x="170" y="500" fill="#b6d4eb" font-family="Arial, sans-serif" font-size="34">Use: /public/media/projects/project-01.webp</text>
+</svg>
