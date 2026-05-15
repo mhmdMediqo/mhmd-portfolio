@@ -110,7 +110,7 @@
             transform-style: preserve-3d;
             will-change: transform;
         }
-        .float-card img, .float-card video { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .float-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
         .float-card .label {
             position: absolute;
             left: 0.8rem;
@@ -124,7 +124,6 @@
             text-transform: uppercase;
         }
         .float-1 { height: 210px; left: 0%; top: 7%; transform: translateZ(80px) rotateY(-12deg) rotateX(6deg); }
-        .float-2 { height: 250px; right: 4%; top: 18%; transform: translateZ(120px) rotateY(10deg) rotateX(-4deg); }
         .float-3 { height: 220px; left: 18%; bottom: 3%; transform: translateZ(42px) rotateY(8deg); }
         .float-4 { height: 260px; right: 18%; bottom: -3%; transform: translateZ(140px) rotateY(-7deg); }
 
@@ -184,7 +183,7 @@
             transition: transform 280ms ease, border-color 280ms ease;
         }
         .media-card:hover { transform: translateY(-4px) translateZ(14px); border-color: rgba(122, 240, 213, 0.52); }
-        .media-card img, .media-card video { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .media-card img { width: 100%; height: 100%; display: block; object-fit: cover; }
         .media-copy {
             position: absolute;
             left: 0.9rem;
@@ -220,7 +219,6 @@
         }
         @media (max-width: 680px) {
             .float-card { width: clamp(150px, 40vw, 220px); }
-            .float-2 { right: 0; }
             .float-4 { right: 8%; }
             h1 { font-size: clamp(1.85rem, 10vw, 2.8rem); }
             .footer .section-inner { flex-direction: column; }
@@ -254,10 +252,6 @@
                                     <img src="/media/placeholders/profile-shot.svg" alt="Profile visual placeholder" width="900" height="1100" fetchpriority="high" decoding="async">
                                 </picture>
                                 <span class="label">Profile</span>
-                            </article>
-                            <article class="float-card float-2" data-tilt>
-                                <video src="/video/hero-cinematic.mp4" muted loop playsinline preload="metadata" poster="/media/placeholders/searchha-feature.svg"></video>
-                                <span class="label">Cinematic Reel</span>
                             </article>
                             <article class="float-card float-3" data-tilt>
                                 <picture><img src="/media/placeholders/project-grid-01.svg" alt="Project screenshot placeholder" width="1400" height="900" loading="lazy" decoding="async"></picture>
@@ -301,8 +295,8 @@
                 <div class="section-inner">
                     <div class="section-head" data-reveal>
                         <span class="kicker">Projects / Media</span>
-                        <h2>3D showcase with photos and video previews.</h2>
-                        <p>The cards below are media-first and optimized for performance with lazy images, metadata-preloaded video, and transform-only interaction animation.</p>
+                        <h2>3D showcase with photos and project previews.</h2>
+                        <p>The cards below are media-first and optimized for performance with lazy images and transform-only interaction animation.</p>
                     </div>
                     <div class="showcase-grid" data-reveal>
                         <article class="media-card featured" data-tilt>
@@ -313,10 +307,6 @@
                                 <h3>Searchha - Featured Newest Project</h3>
                                 <p>Full-Stack Developer | Laravel, Blade, Vite | 3 months | searchha.com</p>
                             </div>
-                        </article>
-                        <article class="media-card" data-tilt>
-                            <video src="/video/hero-cinematic.mp4" muted loop playsinline preload="none" loading="lazy" poster="/media/placeholders/project-grid-01.svg"></video>
-                            <div class="media-copy"><h3>Cinematic Product Reel</h3><p>Muted loop preview with offscreen pause logic.</p></div>
                         </article>
                         <article class="media-card" data-tilt>
                             <picture><img src="/media/placeholders/project-grid-01.svg" alt="Project gallery placeholder one" width="1400" height="900" loading="lazy" decoding="async"></picture>
@@ -363,7 +353,6 @@
             const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
             const tiltItems = Array.from(document.querySelectorAll("[data-tilt]"));
             const parallaxContainers = Array.from(document.querySelectorAll("[data-parallax]"));
-            const videos = Array.from(document.querySelectorAll("video"));
 
             revealItems.forEach((item, i) => {
                 item.style.transitionDelay = `${Math.min(i * 28, 220)}ms`;
@@ -411,19 +400,6 @@
                 onScrollDepth();
             }
 
-            if ("IntersectionObserver" in window) {
-                const videoObserver = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        const video = entry.target;
-                        if (entry.isIntersecting) {
-                            video.play().catch(() => {});
-                        } else {
-                            video.pause();
-                        }
-                    });
-                }, { threshold: 0.2 });
-                videos.forEach((video) => videoObserver.observe(video));
-            }
         })();
     </script>
 </body>
